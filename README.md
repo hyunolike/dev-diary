@@ -1,6 +1,10 @@
 # dev-diary
 > [!IMPORTANT]
-> 🍀 개발일지 "A daily log of coding activities and development progress"
+> Dev-Diary는 하루하루 새롭게 일궈낸 개발 내용들을 정리하는 저의 코드 창고입니다. <br/>
+> 코드 창고가 두둑해질수록 제 실력도 두둑해지겠죠?! 💻 🚀 <br/>
+> ''' <br/>
+> Dev-Diary is my code repository where I organize the development progress I achieve day by day. <br/>
+> As my code repository grows fuller, so will my skills! 💻 🚀 <br/>
 
 ```md
 [프로젝트명 `개발일지 #1` `개발일지명`]
