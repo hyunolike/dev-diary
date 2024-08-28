@@ -18,5 +18,5 @@ ex. 실시간 반응형 추천 개발일지 #1. 프로젝트 소개
 |작성완료|![](https://img.shields.io/github/issues-closed/hyunolike/dev-diary.svg)|
 ---
 ### 🌱 이너서클 1th BE
-- [`커머스 팀프로젝트(관리자)` 개발일지 #1. 명세서 spring rest docs & swagger (openapi) 적용](#)
+- [`커머스 팀프로젝트(관리자)` 개발일지 #1. API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화](#)
 
