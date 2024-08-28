@@ -28,4 +28,7 @@
 #### OAS 기반 API 문서 자동화 프로세스 이너서클 커머스 관리자 프로젝트 적용 설계
 <img width="751" alt="image" src="https://github.com/user-attachments/assets/c0b5a23f-2f14-435b-8fa0-aea93b65958a">
 
-
+---
+#### 참고문헌
+- [카카오페이/OpenAPI Specification을 이용한 더욱 효과적인 API 문서화](https://tech.kakaopay.com/post/openapi-documentation/)
+- [Swagger와 Spring rest docs, 두마리 토끼 잡기!🐰](https://yummy0102.tistory.com/666)
