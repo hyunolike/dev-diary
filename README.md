@@ -11,6 +11,12 @@
 ex. 실시간 반응형 추천 개발일지 #1. 프로젝트 소개
 ```
 
+### 👨‍🌾 개발일지 이력
+|개발일지|현황|
+|-|-|
+|작성대기|![](https://img.shields.io/github/issues/hyunolike/dev-diary.svg)|
+|작성완료|![](https://img.shields.io/github/issues-closed/hyunolike/dev-diary.svg)|
+---
 ### 🌱 이너서클 1th BE
 - [`커머스 팀프로젝트(관리자)` 개발일지 #1. 명세서 spring rest docs & swagger (openapi) 적용](#)
 
