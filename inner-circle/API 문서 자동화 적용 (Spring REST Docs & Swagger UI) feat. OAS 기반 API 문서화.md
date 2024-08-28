@@ -1,4 +1,5 @@
 ## API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화
+> 작성날짜: 24.08.28
 
 ### 상황
 - API 문서 프론트엔드 팀 전달 필요
