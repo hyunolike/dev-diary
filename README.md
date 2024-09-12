@@ -1,4 +1,4 @@
-# dev-diary
+# dev-diary [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fhyunolike%2Fdev-diary&count_bg=%235CB7BE&title_bg=%23555555&icon=buzzfeed.svg&icon_color=%23E7E7E7&title=%EB%B0%A9%EB%AC%B8%EC%9E%90+%EC%88%98&edge_flat=false)](https://hits.seeyoufarm.com)
 > [!IMPORTANT]
 > Dev-Diary는 하루하루 새롭게 일궈낸 개발 내용들을 정리하는 저의 코드 창고입니다. <br/>
 > 코드 창고가 두둑해질수록 제 실력도 두둑해지겠죠?! 💻 🚀 <br/>
