@@ -6,6 +6,8 @@
 > Dev-Diary is my code repository where I organize the development progress I achieve day by day. <br/>
 > As my code repository grows fuller, so will my skills! 💻 🚀 <br/>
 
+![image](https://github.com/user-attachments/assets/3df431eb-fd87-4af0-999b-e57710b2c606)
+
 ```md
 [프로젝트명 `개발일지 #1` `개발일지명`]
 ex. 실시간 반응형 추천 개발일지 #1. 프로젝트 소개
