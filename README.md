@@ -10,7 +10,7 @@
 
 ### 📘 아카이브 하이라이트
 1. **🖥️ 개발 일지**: 제 실제 프로젝트 경험, 기술 구현 과정, 문제 해결 방법을 기록합니다.
-   - 위치: [🖥️ 개발 일지](#-개발-일지)
+   - 위치: [🖥️ 개발 일지](#dev-log)
    - 예시: "`📚 학습 및 연구`: [GraphQL] - Apollo Client 사용법 학습"
 
 2. **🔍 기업 기술 블로그 탐구 일지**: 주요 IT 기업들의 기술 블로그를 분석하고 요약합니다.
@@ -36,6 +36,7 @@
 |작성대기|![](https://img.shields.io/github/issues/hyunolike/dev-diary.svg)|
 |작성완료|![](https://img.shields.io/github/issues-closed/hyunolike/dev-diary.svg)|
 ---
+<a name="dev-log"></a>
 ## 🖥️ 개발 일지
 ### 🌱 이너서클 1th BE
 - [`커머스 팀프로젝트(관리자)` 개발일지 #1. API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/API%20%EB%AC%B8%EC%84%9C%20%EC%9E%90%EB%8F%99%ED%99%94%20%EC%A0%81%EC%9A%A9%20(Spring%20REST%20Docs%20%26%20Swagger%20UI)%20feat.%20OAS%20%EA%B8%B0%EB%B0%98%20API%20%EB%AC%B8%EC%84%9C%ED%99%94.md)
