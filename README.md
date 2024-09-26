@@ -53,3 +53,11 @@
 - [`커머스 팀프로젝트` 개발일지 #12. 예측 가능하고 제어하기 쉬운 소프트웨어에 대해 알아보자 (feat. 지속 성장 가능한 소프트웨어를 만들어가는 방법)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%98%88%EC%B8%A1%20%EA%B0%80%EB%8A%A5%ED%95%98%EA%B3%A0%20%EC%A0%9C%EC%96%B4%ED%95%98%EA%B8%B0%20%EC%89%AC%EC%9A%B4%20%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90%20(feat.%20%EC%A7%80%EC%86%8D%20%EC%84%B1%EC%9E%A5%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EB%A5%BC%20%EB%A7%8C%EB%93%A4%EC%96%B4%EA%B0%80%EB%8A%94%20%EB%B0%A9%EB%B2%95).md)
 
 ## 🔍 기업 기술 블로그 탐구 일지
+`🚜... 업데이트 중`
+
+
+---
+### 💬 문의 & 피드백
+
+"🚀 Tech & Code Insights Archive"에 대한 문의사항이나 피드백이 있으신가요? GitHub Discussions를 통해 소통해 주세요! <br />
+[Discussions 참여하기 →](https://github.com/hyunolike/dev-diary/discussions)
