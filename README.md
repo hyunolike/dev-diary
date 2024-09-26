@@ -38,6 +38,8 @@
 ---
 <a name="dev-log"></a>
 ## 🖥️ 개발 일지
+> [!NOTE]
+> 실제 프로젝트 경험과 기술 구현 과정 공유
 ### 🌱 이너서클 1th BE
 - [`커머스 팀프로젝트(관리자)` 개발일지 #1. API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/API%20%EB%AC%B8%EC%84%9C%20%EC%9E%90%EB%8F%99%ED%99%94%20%EC%A0%81%EC%9A%A9%20(Spring%20REST%20Docs%20%26%20Swagger%20UI)%20feat.%20OAS%20%EA%B8%B0%EB%B0%98%20API%20%EB%AC%B8%EC%84%9C%ED%99%94.md)
 - [`커머스 팀프로젝트(관리자)` 개발일지 #2. Spring Boot (Kotlin, Gradle) + Docker 를 AWS 배포해보자](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/Spring%20Boot%20(Kotlin%2C%20Gradle)%20%2B%20Docker%20%EB%A5%BC%20AWS%20%EB%B0%B0%ED%8F%AC%ED%95%B4%EB%B3%B4%EC%9E%90.md)
@@ -53,6 +55,9 @@
 - [`커머스 팀프로젝트` 개발일지 #12. 예측 가능하고 제어하기 쉬운 소프트웨어에 대해 알아보자 (feat. 지속 성장 가능한 소프트웨어를 만들어가는 방법)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%98%88%EC%B8%A1%20%EA%B0%80%EB%8A%A5%ED%95%98%EA%B3%A0%20%EC%A0%9C%EC%96%B4%ED%95%98%EA%B8%B0%20%EC%89%AC%EC%9A%B4%20%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90%20(feat.%20%EC%A7%80%EC%86%8D%20%EC%84%B1%EC%9E%A5%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EB%A5%BC%20%EB%A7%8C%EB%93%A4%EC%96%B4%EA%B0%80%EB%8A%94%20%EB%B0%A9%EB%B2%95).md)
 
 ## 🔍 기업 기술 블로그 탐구 일지
+> [!NOTE]
+> 주요 IT 기업들의 최신 기술 동향 분석
+
 `🚜... 업데이트 중`
 
 
