@@ -85,8 +85,42 @@
 <img width="745" alt="image" src="https://github.com/user-attachments/assets/ecf32479-0033-40c9-bd4b-076e6b1f1891">
 
 
-### 저자가 제안한 방법론기반으로 다시 설계해보자!
-... 작성 중
+### 저자가 제안한 방법론기반으로 다시 설계해보자! 
+> [이너서클 1기 5&6조 커머스 프로젝트 바로가기](https://github.com/FC-InnerCircle/icd01-team05_06-commerce-be)
+#### 모듈 
+|현재|개선안(예상)|저자가 제안한 모듈 구조
+|-|-|-|
+|<img width="317" alt="image" src="https://github.com/user-attachments/assets/28f86a1d-1e71-4e76-b596-d26c30d28b2f">|<img width="313" alt="image" src="https://github.com/user-attachments/assets/5266edd8-f8a5-46f6-a4ce-330bb5d11002">|<img width="337" alt="image" src="https://github.com/user-attachments/assets/0af45838-5764-4e40-b837-ad49df6ba73b">|
 
+
+- 기존 common 모듈의 역할을 분리
+    - `저자` 가 제안한 모듈별 역할과 동일하게 가져감
+
+#### 레이어
+|현재|개선안(예상)|
+|-|-|
+|<img width="388" alt="image" src="https://github.com/user-attachments/assets/aff0336c-a495-4d18-a3a3-e2c48766529b">|<img width="404" alt="image" src="https://github.com/user-attachments/assets/63cc53cc-d27e-4bf7-87fc-6c536f0e8ba0">|
+
+- implemnet layer 계층을 추가함으로써 business layer에는 도메인(유비쿼터스) 언어로만 구성
+
+##### 레이어의 개선안을 좀 더 자세히 보자
+<img width="541" alt="image" src="https://github.com/user-attachments/assets/d17eec5e-4673-4d9c-9640-9211b638074e">
+
+#### 최종 아키텍처는???
+<img width="561" alt="image" src="https://github.com/user-attachments/assets/857b9b59-efb3-414a-a892-4ccc45797b95">
+
+
+- 현재는 위처럼 일부 모듈의 의존성이 다른 레이어 층을 바로 의존하고 있다!
+
+<img width="564" alt="image" src="https://github.com/user-attachments/assets/37db9f05-c98c-4556-b4d7-9d6f1ee315c5">
+
+
+- 그렇지만, 최종 개선안(예상) 에는 레이어별 의존관계도 정리된 모습
+
+### 회고
+- 소프트웨어 개발은 단순히 기술 적용뿐 아니라 유지보수, 확장성을 위한 아키텍처 중요
+- 결국에는 비즈니스를 위한 서비스이므로 모든 관계자들이 알 수 있는 `비즈니스(도메인) 언어` 로 작성된 코드 중요
+- 백엔드뿐 아니라 프론트 영역에서도 위와 같이 사용하는 것이 필요
+    - 비록 앞단의 개발이지만 전역, 지역, 서버 데이터별 역할 관리가 있기 때문
 
 
