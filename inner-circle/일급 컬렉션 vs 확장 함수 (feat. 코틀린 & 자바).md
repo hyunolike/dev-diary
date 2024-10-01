@@ -5,6 +5,35 @@
 -  OOP 에서 컬렉션을 래핑하여 그 자체를 하나의 클래스로 만드는 것 (Collection -> Wrapping)
 -  🔥컬렉션 래핑에 중점을 두자!!
 
+### 일급 컬렉션을 사용하는 상황은?
+- 코틀린에서 일급 컬렉션은 컬렉션을 캡슐화하여 비즈니스 로직을 추가하거나 불변성을 보장하고 싶을 때 사용
+
+
+```kotlin
+class UserNames private constructor(private val names: List<String>) : List<String> by names {
+    
+    fun containsInvalidName(): Boolean = 
+        any { it.isEmpty() || it.length > 50 }
+
+    fun toUpperCase(): UserNames = 
+        UserNames(map { it.uppercase() })
+
+    companion object {
+        fun of(names: List<String>): UserNames {
+            require(names.isNotEmpty()) { "Names list cannot be empty" }
+            return UserNames(names.toList())
+        }
+    }
+}
+
+// 사용 예시
+fun main() {
+    val userNames = UserNames.of(listOf("Alice", "Bob", "Charlie"))
+    
+    println(userNames.containsInvalidName()) // false
+    println(userNames.toUpperCase()) // [ALICE, BOB, CHARLIE]
+}
+```
 #### 장점은?
 - 비즈니스 로직을 한 곳에 모아 관리할 수 있습니다.
 - 컬렉션의 불변성을 보장합니다.
