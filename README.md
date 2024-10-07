@@ -62,6 +62,7 @@
 > 주요 IT 기업들의 최신 기술 동향 분석
 - [`🔍 기술 탐구` 「29CM」 신규 검색 서비스 전환기 (feat. 컬리)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B8%B0%EC%97%85-%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%ED%83%90%EA%B5%AC-%EC%9D%BC%EC%A7%80/%E3%80%8C29CM%E3%80%8D%20%EC%8B%A0%EA%B7%9C%20%EA%B2%80%EC%83%89%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%84%ED%99%98%EA%B8%B0%20(feat.%20%EC%BB%AC%EB%A6%AC).md)
 - [🔍 「고스락」 프로젝트 백엔드 개발 분석](https://github.com/hyunolike/dev-diary/blob/develop/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B6%84%EC%84%9D-%EC%9D%BC%EC%A7%80/%E3%80%8C%EA%B3%A0%EC%8A%A4%EB%9D%BD%E3%80%8D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%B0%B1%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C%20%EB%B6%84%EC%84%9D%EA%B8%B0.md)
+- [🔍 「EmergencyAssistant」 프로젝트 백엔드 개발 분석](https://github.com/hyunolike/dev-diary/blob/develop/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B6%84%EC%84%9D-%EC%9D%BC%EC%A7%80/%E3%80%8CEmergencyAssistant%E3%80%8D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%B0%B1%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C%20%EB%B6%84%EC%84%9D.md)
 
 
 ---
