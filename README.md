@@ -57,6 +57,9 @@
 - [`커머스 팀프로젝트(서비스/주문)` 개발일지 #14. `🛠️ 기능 개발` 주문 서버 개발기 3편 (구현) (feat.지속 가능한 소프트웨어)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%A3%BC%EB%AC%B8%20%EC%84%9C%EB%B2%84%20%EA%B0%9C%EB%B0%9C%EA%B8%B0%203%ED%8E%B8%20(%EA%B5%AC%ED%98%84)%20(feat.%EC%A7%80%EC%86%8D%20%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4).md)
 - [`커머스 팀프로젝트` 개발일지 #15. `📚 학습 및 연구` 일급 컬렉션 vs 확장 함수 (feat. 코틀린 & 자바)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%9D%BC%EA%B8%89%20%EC%BB%AC%EB%A0%89%EC%85%98%20vs%20%ED%99%95%EC%9E%A5%20%ED%95%A8%EC%88%98%20(feat.%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%26%20%EC%9E%90%EB%B0%94).md)
   
+### 👨‍🌾 개인
+- [`📚 학습 및 연구` Java의 Record Class (feat. Kotlin의 Data Class)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%EC%9D%98%20Record%20Class%20(feat.%20Kotlin%EC%9D%98%20Data%20Class).md)
+  
 ## 🔍 기업 기술 블로그 탐구 일지
 > [!NOTE]
 > 주요 IT 기업들의 최신 기술 동향 분석
