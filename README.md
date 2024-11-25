@@ -58,6 +58,7 @@
 - [`커머스 팀프로젝트` 개발일지 #15. `📚 학습 및 연구` 일급 컬렉션 vs 확장 함수 (feat. 코틀린 & 자바)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%9D%BC%EA%B8%89%20%EC%BB%AC%EB%A0%89%EC%85%98%20vs%20%ED%99%95%EC%9E%A5%20%ED%95%A8%EC%88%98%20(feat.%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%26%20%EC%9E%90%EB%B0%94).md)
   
 ### 👨‍🌾 개인
+- [`📚 학습 및 연구` RabbitMQ Local Hands-on](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/RabbitMQ%20Local%20Hands-on.md)
 - [`📚 학습 및 연구` Redis Local Hands-on (feat. redis key 문법)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Redis%20Local%20Hands-on.md)
 - [`📚 학습 및 연구` Kafka Local Hands-on](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Kafka%20Local%20Hands-on.md)
 - [`가사를 쉽게 간직하고 공유,Mute 프로젝트` 개발일지 #0. `🛠️ 기능 개발` Spring Security OAuth2 - Enum을 활용한 소셜 로그인 응답 데이터 변환 전략](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%60%EA%B0%80%EC%82%AC%EB%A5%BC%20%EC%89%BD%EA%B2%8C%20%EA%B0%84%EC%A7%81%ED%95%98%EA%B3%A0%20%EA%B3%B5%EC%9C%A0%2CMute%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%60%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80%20%230.%20%60%F0%9F%9B%A0%EF%B8%8F%20%EA%B8%B0%EB%8A%A5%20%EA%B0%9C%EB%B0%9C%60%20Spring%20Security%20OAuth2%20-%20Enum%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EC%86%8C%EC%85%9C%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9D%91%EB%8B%B5%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%80%ED%99%98%20%EC%A0%84%EB%9E%B5.md)
