@@ -44,10 +44,10 @@
 ### 📘 실습 자료
 |No|실습 자료|주요 실습 키워드|
 |-|-|-|
-|1|[예약-대기열-시스템](./핵사고날-패키지구조/예약-대기열-시스템)|`핵사고날` `레디스` `Sorted Set`|
-|2|[사용자-활동-알림-시스템](./핵사고날-패키지구조/사용자-활동-알림-시스템)|`핵사고날` `RabbitMQ` `MSA`|
-|3|[API-통합-시스템](./핵사고날-패키지구조/API-통합-시스템/)|`핵사고날` `MongoDB` `레디스 (캐시)` `Scheduler`|
-|4|[업무-성과-관리-시스템](./업무지원-시스템/업무-성과-관리-시스템/)|`업무지원 시스템` `JSP` `MySQL` `Datatables`|
+|1|[예약-대기열-시스템](https://gitlab.com/hyunho.jang.biz/hbln/-/tree/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/%ED%95%B5%EC%82%AC%EA%B3%A0%EB%82%A0-%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B5%AC%EC%A1%B0/%EC%98%88%EC%95%BD-%EB%8C%80%EA%B8%B0%EC%97%B4-%EC%8B%9C%EC%8A%A4%ED%85%9C)|`핵사고날` `레디스` `Sorted Set`|
+|2|[사용자-활동-알림-시스템](https://gitlab.com/hyunho.jang.biz/hbln/-/tree/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/%ED%95%B5%EC%82%AC%EA%B3%A0%EB%82%A0-%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B5%AC%EC%A1%B0/%EC%82%AC%EC%9A%A9%EC%9E%90-%ED%99%9C%EB%8F%99-%EC%95%8C%EB%A6%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C)|`핵사고날` `RabbitMQ` `MSA`|
+|3|[API-통합-시스템](https://gitlab.com/hyunho.jang.biz/hbln/-/tree/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/%ED%95%B5%EC%82%AC%EA%B3%A0%EB%82%A0-%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B5%AC%EC%A1%B0/API-%ED%86%B5%ED%95%A9-%EC%8B%9C%EC%8A%A4%ED%85%9C)|`핵사고날` `MongoDB` `레디스 (캐시)` `Scheduler`|
+|4|[업무-성과-관리-시스템](https://gitlab.com/hyunho.jang.biz/hbln/-/tree/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/%EC%97%85%EB%AC%B4%EC%A7%80%EC%9B%90-%EC%8B%9C%EC%8A%A4%ED%85%9C/%EC%97%85%EB%AC%B4-%EC%84%B1%EA%B3%BC-%EA%B4%80%EB%A6%AC-%EC%8B%9C%EC%8A%A4%ED%85%9C)|`업무지원 시스템` `JSP` `MySQL` `Datatables`|
 
 
 #### [🚀 추가 실습 자료 바로가기](https://gitlab.com/hyunho.jang.biz/hbln/-/blob/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/README.md)
