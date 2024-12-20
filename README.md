@@ -42,6 +42,8 @@
 -->
 ---
 ### 📘 실습 자료
+>  ![](https://img.shields.io/badge/GitLab_실습_자료-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white)
+
 |No|실습 자료|주요 실습 키워드|
 |-|-|-|
 |1|[예약-대기열-시스템](https://gitlab.com/hyunho.jang.biz/hbln/-/tree/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/%ED%95%B5%EC%82%AC%EA%B3%A0%EB%82%A0-%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B5%AC%EC%A1%B0/%EC%98%88%EC%95%BD-%EB%8C%80%EA%B8%B0%EC%97%B4-%EC%8B%9C%EC%8A%A4%ED%85%9C)|`핵사고날` `레디스` `Sorted Set`|
@@ -52,6 +54,13 @@
 
 
 #### [🚀 추가 실습 자료 바로가기](https://gitlab.com/hyunho.jang.biz/hbln/-/blob/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/README.md)
+---
+### 📘 실습 자료
+>  ![](https://img.shields.io/badge/GitHub_실습_자료-181717?style=for-the-badge&logo=GitHub&logoColor=white)
+
+|No|실습 자료|주요 실습 키워드|
+|-|-|-|
+|-|[실시간-가상자산-시장-모니터링-플랫폼](https://github.com/hh-jang-kr/CryptoMarketMonitor)|`핵사고날` `bithumb API` `Kafka` `Redis`|
 
 ---
 <a name="dev-log"></a>
