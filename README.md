@@ -42,7 +42,7 @@
 -->
 ---
 ### 📘 실습 자료
->  ![](https://img.shields.io/badge/GitLab_실습_자료-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white)
+>  [![](https://img.shields.io/badge/GitLab_실습_자료_바로가기-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white)](https://gitlab.com/hyunho.jang.biz/hbln/-/blob/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/README.md)
 
 |No|실습 자료|주요 실습 키워드|
 |-|-|-|
@@ -56,7 +56,7 @@
 #### [🚀 추가 실습 자료 바로가기](https://gitlab.com/hyunho.jang.biz/hbln/-/blob/main/%EC%8B%A4%EC%8A%B5%EC%9E%90%EB%A3%8C/README.md)
 ---
 ### 📘 실습 자료
->  ![](https://img.shields.io/badge/GitHub_실습_자료-181717?style=for-the-badge&logo=GitHub&logoColor=white)
+>  [![](https://img.shields.io/badge/GitHub_실습_자료_바로가기-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/hh-jang-kr)
 
 |No|실습 자료|주요 실습 키워드|
 |-|-|-|
