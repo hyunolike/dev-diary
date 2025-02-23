@@ -93,6 +93,7 @@
 - [`📚 학습 및 연구` Java의 Record Class (feat. Kotlin의 Data Class)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%EC%9D%98%20Record%20Class%20(feat.%20Kotlin%EC%9D%98%20Data%20Class).md)
 
 ### 🏪 업무
+- [`📚 학습 및 연구` SVN 병합 프로세스](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/SVN%20%EB%B3%91%ED%95%A9%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4.md)
 - [`📚 학습 및 연구` SVN 병합 충돌은 어떻게 해결할까](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/SVN%20%EB%B3%91%ED%95%A9%20%EC%B6%A9%EB%8F%8C%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EA%B2%B0%ED%95%A0%EA%B9%8C.md)
 - [`📚 학습 및 연구` SVN vs Git 작업 프로세스 비교 (작업 과정, 브랜치 전략)](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/SVN%20vs%20Git%20%EC%9E%91%EC%97%85%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EB%B9%84%EA%B5%90.md)
 - [`📚 학습 및 연구` SVN에 대해 알아보자](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/SVN%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90.md)
