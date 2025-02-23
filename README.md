@@ -93,7 +93,7 @@
 - [`📚 학습 및 연구` Java의 Record Class (feat. Kotlin의 Data Class)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%EC%9D%98%20Record%20Class%20(feat.%20Kotlin%EC%9D%98%20Data%20Class).md)
 
 ### 🏪 업무
-- [`📚 학습 및 연구` SVN에 대해 알아보자](#)
+- [`📚 학습 및 연구` SVN에 대해 알아보자](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/SVN%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90.md)
 
 > [!TIP]
 > 아키텍처 학습 레포지토리
