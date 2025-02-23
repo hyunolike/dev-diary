@@ -92,6 +92,9 @@
 - [`가사를 쉽게 간직하고 공유,Mute 프로젝트` 개발일지 #0. `🛠️ 기능 개발` Spring Security OAuth2 - Enum을 활용한 소셜 로그인 응답 데이터 변환 전략](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%60%EA%B0%80%EC%82%AC%EB%A5%BC%20%EC%89%BD%EA%B2%8C%20%EA%B0%84%EC%A7%81%ED%95%98%EA%B3%A0%20%EA%B3%B5%EC%9C%A0%2CMute%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%60%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80%20%230.%20%60%F0%9F%9B%A0%EF%B8%8F%20%EA%B8%B0%EB%8A%A5%20%EA%B0%9C%EB%B0%9C%60%20Spring%20Security%20OAuth2%20-%20Enum%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EC%86%8C%EC%85%9C%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9D%91%EB%8B%B5%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%80%ED%99%98%20%EC%A0%84%EB%9E%B5.md)
 - [`📚 학습 및 연구` Java의 Record Class (feat. Kotlin의 Data Class)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%EC%9D%98%20Record%20Class%20(feat.%20Kotlin%EC%9D%98%20Data%20Class).md)
 
+### 🏪 업무
+- [`📚 학습 및 연구` SVN에 대해 알아보자](#)
+
 > [!TIP]
 > 아키텍처 학습 레포지토리
 - [🧑🏼‍🌾 스타트업 Architectural Runway 지침](https://github.com/hyunolike/ArchitecturalRunwayGuidelines)  
@@ -105,7 +108,6 @@
 - [`🔍 기술 탐구` 「29CM」 신규 검색 서비스 전환기 (feat. 컬리)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B8%B0%EC%97%85-%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%ED%83%90%EA%B5%AC-%EC%9D%BC%EC%A7%80/%E3%80%8C29CM%E3%80%8D%20%EC%8B%A0%EA%B7%9C%20%EA%B2%80%EC%83%89%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%84%ED%99%98%EA%B8%B0%20(feat.%20%EC%BB%AC%EB%A6%AC).md)
 - [🔍 「고스락」 프로젝트 백엔드 개발 분석](https://github.com/hyunolike/dev-diary/blob/develop/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B6%84%EC%84%9D-%EC%9D%BC%EC%A7%80/%E3%80%8C%EA%B3%A0%EC%8A%A4%EB%9D%BD%E3%80%8D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%B0%B1%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C%20%EB%B6%84%EC%84%9D%EA%B8%B0.md)
 - [🔍 「EmergencyAssistant」 프로젝트 백엔드 개발 분석](https://github.com/hyunolike/dev-diary/blob/develop/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B6%84%EC%84%9D-%EC%9D%BC%EC%A7%80/%E3%80%8CEmergencyAssistant%E3%80%8D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%B0%B1%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C%20%EB%B6%84%EC%84%9D.md)
-
 
 ---
 ### 💬 문의 & 피드백
