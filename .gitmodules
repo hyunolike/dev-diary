@@ -1,0 +1,3 @@
+[submodule "study.langchain"]
+	path = study.langchain
+	url = git@github.com:hyunolike/study.langchain.git
