@@ -67,6 +67,12 @@
 ## 🖥️ 개발 일지
 > [!NOTE]
 > 실제 프로젝트 경험과 기술 구현 과정 공유
+### 🦁 AI 
+|No|학습 자료|주요 학습 키워드|
+|-|-|-|
+|1|[study.langchaing(feat. RAG)](https://github.com/hyunolike/study.langchain)|`LangChain` `RAG` `OpenAPI`|
+
+
 ### 🌱 이너서클 1th BE
 - [`커머스 팀프로젝트(관리자)` 개발일지 #1.`🛠️ 기능 개발`  API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/API%20%EB%AC%B8%EC%84%9C%20%EC%9E%90%EB%8F%99%ED%99%94%20%EC%A0%81%EC%9A%A9%20(Spring%20REST%20Docs%20%26%20Swagger%20UI)%20feat.%20OAS%20%EA%B8%B0%EB%B0%98%20API%20%EB%AC%B8%EC%84%9C%ED%99%94.md)
 - [`커머스 팀프로젝트(관리자)` 개발일지 #2. `📚 학습 및 연구` Spring Boot (Kotlin, Gradle) + Docker 를 AWS 배포해보자](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/Spring%20Boot%20(Kotlin%2C%20Gradle)%20%2B%20Docker%20%EB%A5%BC%20AWS%20%EB%B0%B0%ED%8F%AC%ED%95%B4%EB%B3%B4%EC%9E%90.md)
