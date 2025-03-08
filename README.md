@@ -70,7 +70,8 @@
 ### 🦁 AI 
 |No|학습 자료|주요 학습 키워드|
 |-|-|-|
-|1|[study.langchaing(feat. RAG)](https://github.com/hyunolike/study.langchain)|`LangChain` `RAG` `OpenAPI`|
+|1|[study.langchaing(feat. RAG)](https://github.com/hyunolike/study.langchain)|`LangChain` `RAG` `OpenAI`|
+|2|[study.langgraph(feat. multi agent)](https://github.com/hyunolike/study.langgraph)|`-`|
 
 
 ### 🌱 이너서클 1th BE
