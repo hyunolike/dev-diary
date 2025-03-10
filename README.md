@@ -100,6 +100,7 @@
 - [`📚 학습 및 연구` Java의 Record Class (feat. Kotlin의 Data Class)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%EC%9D%98%20Record%20Class%20(feat.%20Kotlin%EC%9D%98%20Data%20Class).md)
 
 ### 🏪 업무
+- [`📚 학습 및 연구` 오라클에서 시퀀스 이용한 단일 행 반환 방법 (feat. DUAL 테이블)](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/%EC%98%A4%EB%9D%BC%ED%81%B4%EC%97%90%EC%84%9C%20%EC%8B%9C%ED%80%80%EC%8A%A4%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%8B%A8%EC%9D%BC%20%ED%96%89%20%EB%B0%98%ED%99%98%20%EB%B0%A9%EB%B2%95.md)
 - [`📚 학습 및 연구` SVN 주요 용어 설명](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/SVN%20%EC%A3%BC%EC%9A%94%20%EC%9A%A9%EC%96%B4%20%EC%84%A4%EB%AA%85.md)
 - [`📚 학습 및 연구` SVN 병합 프로세스](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/SVN%20%EB%B3%91%ED%95%A9%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4.md)
 - [`📚 학습 및 연구` SVN 병합 충돌은 어떻게 해결할까](https://github.com/hyunolike/dev-diary/blob/develop/%EC%97%85%EB%AC%B4/SVN%20%EB%B3%91%ED%95%A9%20%EC%B6%A9%EB%8F%8C%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EA%B2%B0%ED%95%A0%EA%B9%8C.md)
