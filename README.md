@@ -92,6 +92,7 @@
 - [`커머스 팀프로젝트` 개발일지 #15. `📚 학습 및 연구` 일급 컬렉션 vs 확장 함수 (feat. 코틀린 & 자바)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%9D%BC%EA%B8%89%20%EC%BB%AC%EB%A0%89%EC%85%98%20vs%20%ED%99%95%EC%9E%A5%20%ED%95%A8%EC%88%98%20(feat.%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%26%20%EC%9E%90%EB%B0%94).md)
   
 ### 👨‍🌾 개인
+- [`📚 학습 및 연구` Java Record vs Lombok @Value 비교](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%20Record%20vs%20Lombok%20%40Value%20%EB%B9%84%EA%B5%90.md) 
 - [`📚 학습 및 연구` Template Engine (View Template)에 대해 알아보자](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Template%20Engine%20(View%20Template)%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90.md)
 - [`📚 학습 및 연구` RabbitMQ Local Hands-on](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/RabbitMQ%20Local%20Hands-on.md)
 - [`📚 학습 및 연구` Redis Local Hands-on (feat. redis key 문법)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Redis%20Local%20Hands-on.md)
