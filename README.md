@@ -72,6 +72,7 @@
 |-|-|-|
 |1|[study.langchaing(feat. RAG)](https://github.com/hyunolike/study.langchain)|`LangChain` `RAG` `OpenAI`|
 |2|[study.langgraph(feat. multi agent)](https://github.com/hyunolike/study.langgraph)|`-`|
+|3|[study.MCP (Model Context Protocol)](https://github.com/hyunolike/study.MCP)|`-`|
 
 
 ### 🌱 이너서클 1th BE
