@@ -93,6 +93,7 @@
 - [`커머스 팀프로젝트` 개발일지 #15. `📚 학습 및 연구` 일급 컬렉션 vs 확장 함수 (feat. 코틀린 & 자바)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%9D%BC%EA%B8%89%20%EC%BB%AC%EB%A0%89%EC%85%98%20vs%20%ED%99%95%EC%9E%A5%20%ED%95%A8%EC%88%98%20(feat.%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%26%20%EC%9E%90%EB%B0%94).md)
   
 ### 👨‍🌾 개인
+- [`기술 블로그 구축 ` 개발일지 #0 `🛠️ 기능 개발` 배포 중 깃 복구 과정](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%60%EA%B8%B0%EC%88%A0%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B5%AC%EC%B6%95%20%60%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80%20%230%20%60%F0%9F%9B%A0%EF%B8%8F%20%EA%B8%B0%EB%8A%A5%20%EA%B0%9C%EB%B0%9C%60%20%EB%B0%B0%ED%8F%AC%20%EC%A4%91%20%EA%B9%83%20%EB%B3%B5%EA%B5%AC%20%EA%B3%BC%EC%A0%95.md)
 - [`📚 학습 및 연구` Java Record vs Lombok @Value 비교](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%20Record%20vs%20Lombok%20%40Value%20%EB%B9%84%EA%B5%90.md) 
 - [`📚 학습 및 연구` Template Engine (View Template)에 대해 알아보자](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Template%20Engine%20(View%20Template)%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90.md)
 - [`📚 학습 및 연구` RabbitMQ Local Hands-on](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/RabbitMQ%20Local%20Hands-on.md)
