@@ -70,10 +70,14 @@
 ### 🦁 AI 
 |No|학습 자료|주요 학습 키워드|
 |-|-|-|
-|0|[study.GStreamer(feat. AI)](https://github.com/hyunolike/study.GStreamer)|`미디어 처리` `AI`|
 |1|[study.langchaing(feat. RAG)](https://github.com/hyunolike/study.langchain)|`LangChain` `RAG` `OpenAI`|
 |2|[study.langgraph(feat. multi agent)](https://github.com/hyunolike/study.langgraph)|`-`|
 |3|[study.MCP (Model Context Protocol)](https://github.com/hyunolike/study.MCP)|`-`|
+
+### 🏖️ 오픈소스
+|No|학습 자료|주요 학습 키워드|
+|-|-|-|
+|1|[study.GStreamer(feat. AI)](https://github.com/hyunolike/study.GStreamer)|`미디어 처리`|
 
 
 ### ✨ 2025 오픈소스 컨트리뷰션 아카데미 (체험형)
