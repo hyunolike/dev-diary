@@ -77,7 +77,7 @@
 ### 🏖️ 오픈소스
 |No|학습 자료|주요 학습 키워드|
 |-|-|-|
-|1|[study.GStreamer(feat. AI)](https://github.com/hyunolike/study.GStreamer)|`미디어 처리`|
+|1|[study.GStreamer(pipeline) + LiveKit](https://github.com/hyunolike/study.GStreamer)|`미디어 처리`|
 
 
 ### ✨ 2025 오픈소스 컨트리뷰션 아카데미 (체험형)
