@@ -83,6 +83,7 @@
 ### ✨ 2025 오픈소스 컨트리뷰션 아카데미 (체험형)
 - [`오픈소스 GStreamer` 개발일지 #1. `📚 학습 및 연구` 네이티브 환경의 X86_64 환경에서 리눅스 듀얼부팅 준비해보자](https://github.com/hyunolike/dev-diary/blob/develop/oss/%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C%20%ED%99%98%EA%B2%BD%EC%9D%98%20X86_64%20%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EB%93%80%EC%96%BC%EB%B6%80%ED%8C%85%20%EC%A4%80%EB%B9%84%ED%95%B4%EB%B3%B4%EC%9E%90.md)
 - [`오픈소스 GStreamer` 개발일지 #2. `📚 학습 및 연구` 로컬 환경 구축하기](https://github.com/hyunolike/dev-diary/blob/develop/oss/%EB%A1%9C%EC%BB%AC%20%ED%99%98%EA%B2%BD%20%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0.md)
+- [`오픈소스 GStreamer` 개발일지 #3. `📚 학습 및 연구` 오픈소스 기여를 위한 Commit 정리](https://github.com/hyunolike/dev-diary/blob/develop/oss/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EC%97%AC%EB%A5%BC%20%EC%9C%84%ED%95%9C%20Commit%20%EC%A0%95%EB%A6%AC.md)
 
 ### 🌱 이너서클 1th BE
 - [`커머스 팀프로젝트(관리자)` 개발일지 #1.`🛠️ 기능 개발`  API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/API%20%EB%AC%B8%EC%84%9C%20%EC%9E%90%EB%8F%99%ED%99%94%20%EC%A0%81%EC%9A%A9%20(Spring%20REST%20Docs%20%26%20Swagger%20UI)%20feat.%20OAS%20%EA%B8%B0%EB%B0%98%20API%20%EB%AC%B8%EC%84%9C%ED%99%94.md)
