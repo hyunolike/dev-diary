@@ -67,6 +67,12 @@
 ## 🖥️ 개발 일지
 > [!NOTE]
 > 실제 프로젝트 경험과 기술 구현 과정 공유
+
+### 🐳 kubernetes
+- [-](#)
+ 
+
+<!--
 ### 🦁 AI 
 |No|학습 자료|주요 학습 키워드|
 |-|-|-|
@@ -78,7 +84,7 @@
 |No|학습 자료|주요 학습 키워드|
 |-|-|-|
 |1|[study.GStreamer(pipeline) + LiveKit](https://github.com/hyunolike/study.GStreamer)|`미디어 처리`|
-
+--> 
 
 ### ✨ 2025 오픈소스 컨트리뷰션 아카데미 (체험형)
 - [`오픈소스 GStreamer` 개발일지 #1. `📚 학습 및 연구` 네이티브 환경의 X86_64 환경에서 리눅스 듀얼부팅 준비해보자](https://github.com/hyunolike/dev-diary/blob/develop/oss/%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C%20%ED%99%98%EA%B2%BD%EC%9D%98%20X86_64%20%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EB%93%80%EC%96%BC%EB%B6%80%ED%8C%85%20%EC%A4%80%EB%B9%84%ED%95%B4%EB%B3%B4%EC%9E%90.md)
