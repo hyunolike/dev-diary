@@ -69,7 +69,7 @@
 > 실제 프로젝트 경험과 기술 구현 과정 공유
 
 ### 🐳 kubernetes
-- [-](#)
+- [`🐛 버그 수정 및 최적화` 모니터링 설치 시 CNI 플러그인 이슈](https://github.com/hyunolike/dev-diary/blob/develop/k8s/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81%20%EC%84%A4%EC%B9%98%20%EC%8B%9C%20CNI%20%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%20%EC%9D%B4%EC%8A%88.md)
  
 
 <!--
