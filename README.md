@@ -69,6 +69,8 @@
 > 실제 프로젝트 경험과 기술 구현 과정 공유
 
 ### 🐳 kubernetes
+> [인프런 Blog @hyunolike](https://www.inflearn.com/users/299926/blogs)
+
 - [`📚 학습 및 연구` 🧰 Pod 문제 해결을 위한 명령어 모음](https://github.com/hyunolike/dev-diary/blob/develop/k8s/Pod%20%EB%AC%B8%EC%A0%9C%20%ED%95%B4%EA%B2%B0%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%AA%85%EB%A0%B9%EC%96%B4%20%EB%AA%A8%EC%9D%8C.md)
 - [`🐛 버그 수정 및 최적화` 모니터링 설치 시 CNI 플러그인 이슈](https://github.com/hyunolike/dev-diary/blob/develop/k8s/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81%20%EC%84%A4%EC%B9%98%20%EC%8B%9C%20CNI%20%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%20%EC%9D%B4%EC%8A%88.md)
 - [`🐛 버그 수정 및 최적화` 네트워크 권한 문제로 인한 Pod 연결 장애](https://github.com/hyunolike/dev-diary/blob/develop/k8s/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EA%B6%8C%ED%95%9C%20%EB%AC%B8%EC%A0%9C%EB%A1%9C%20%EC%9D%B8%ED%95%9C%20Pod%20%EC%97%B0%EA%B2%B0%20%EC%9E%A5%EC%95%A0.md)
