@@ -114,6 +114,7 @@
 - [`커머스 팀프로젝트` 개발일지 #15. `📚 학습 및 연구` 일급 컬렉션 vs 확장 함수 (feat. 코틀린 & 자바)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%9D%BC%EA%B8%89%20%EC%BB%AC%EB%A0%89%EC%85%98%20vs%20%ED%99%95%EC%9E%A5%20%ED%95%A8%EC%88%98%20(feat.%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%26%20%EC%9E%90%EB%B0%94).md)
   
 ### 👨‍🌾 개인
+- [`📚 학습 및 연구` 맥북에 도커 오라클 디비 띄우기 (feat. colima)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%EB%A7%A5%EB%B6%81%EC%97%90%20%EB%8F%84%EC%BB%A4%20%EC%98%A4%EB%9D%BC%ED%81%B4%20%EB%94%94%EB%B9%84%20%EB%9D%84%EC%9A%B0%EA%B8%B0.md)
 - [`📚 학습 및 연구` 빌드 도구 Vite(비트)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%EB%B9%8C%EB%93%9C-%EB%8F%84%EA%B5%AC-Vite%20(feat.%20Vue).md)
 - [`기술 블로그 구축 ` 개발일지 #0 `🛠️ 기능 개발` 배포 중 깃 복구 과정](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%60%EA%B8%B0%EC%88%A0%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B5%AC%EC%B6%95%20%60%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80%20%230%20%60%F0%9F%9B%A0%EF%B8%8F%20%EA%B8%B0%EB%8A%A5%20%EA%B0%9C%EB%B0%9C%60%20%EB%B0%B0%ED%8F%AC%20%EC%A4%91%20%EA%B9%83%20%EB%B3%B5%EA%B5%AC%20%EA%B3%BC%EC%A0%95.md)
 - [`📚 학습 및 연구` Java Record vs Lombok @Value 비교](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%20Record%20vs%20Lombok%20%40Value%20%EB%B9%84%EA%B5%90.md) 
