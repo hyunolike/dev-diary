@@ -114,6 +114,7 @@
 - [`커머스 팀프로젝트` 개발일지 #15. `📚 학습 및 연구` 일급 컬렉션 vs 확장 함수 (feat. 코틀린 & 자바)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%9D%BC%EA%B8%89%20%EC%BB%AC%EB%A0%89%EC%85%98%20vs%20%ED%99%95%EC%9E%A5%20%ED%95%A8%EC%88%98%20(feat.%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%26%20%EC%9E%90%EB%B0%94).md)
   
 ### 👨‍🌾 개인
+- [`📚 학습 및 연구` Jackson이 JSON 직렬화하는 방식](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Jackson%EC%9D%B4%20JSON%20%EC%A7%81%EB%A0%AC%ED%99%94%ED%95%98%EB%8A%94%20%EB%B0%A9%EC%8B%9D.md)
 - [`📚 학습 및 연구` Spring Boot + Vue3 DDD](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/SpringBoot-Vue3-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_DDD.md)
 - [`📚 학습 및 연구` 맥북에 도커 오라클 디비 띄우기 (feat. colima)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%EB%A7%A5%EB%B6%81%EC%97%90%20%EB%8F%84%EC%BB%A4%20%EC%98%A4%EB%9D%BC%ED%81%B4%20%EB%94%94%EB%B9%84%20%EB%9D%84%EC%9A%B0%EA%B8%B0.md)
 - [`📚 학습 및 연구` 빌드 도구 Vite(비트)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%EB%B9%8C%EB%93%9C-%EB%8F%84%EA%B5%AC-Vite%20(feat.%20Vue).md)
