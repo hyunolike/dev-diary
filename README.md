@@ -68,7 +68,7 @@
 > [!NOTE]
 > 실제 프로젝트 경험과 기술 구현 과정 공유
 
-### ✨ DEVOCEAN OpenLab (AI 중심의 오픈 스터디 프로그램)
+### ✨ 2025 DEVOCEAN OpenLab (AI 중심의 오픈 스터디 프로그램)
 - [...](#)
 
 ### 🐳 kubernetes
