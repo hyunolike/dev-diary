@@ -117,6 +117,7 @@
 - [`커머스 팀프로젝트` 개발일지 #15. `📚 학습 및 연구` 일급 컬렉션 vs 확장 함수 (feat. 코틀린 & 자바)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%9D%BC%EA%B8%89%20%EC%BB%AC%EB%A0%89%EC%85%98%20vs%20%ED%99%95%EC%9E%A5%20%ED%95%A8%EC%88%98%20(feat.%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%26%20%EC%9E%90%EB%B0%94).md)
   
 ### 👨‍🌾 개인
+- [`📚 학습 및 연구` 실무에서 자주 사용하는 데이터베이스 & API 패턴 완전 정리](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C%20%EC%9E%90%EC%A3%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%26%20API%20%ED%8C%A8%ED%84%B4%20%EC%99%84%EC%A0%84%20%EC%A0%95%EB%A6%AC.md)
 - [`📚 학습 및 연구` SQLite3란](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/sqllite3.md)
 - [`📚 학습 및 연구` Jackson이 JSON 직렬화하는 방식](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Jackson%EC%9D%B4%20JSON%20%EC%A7%81%EB%A0%AC%ED%99%94%ED%95%98%EB%8A%94%20%EB%B0%A9%EC%8B%9D.md)
 - [`📚 학습 및 연구` Spring Boot + Vue3 DDD](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/SpringBoot-Vue3-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_DDD.md)
