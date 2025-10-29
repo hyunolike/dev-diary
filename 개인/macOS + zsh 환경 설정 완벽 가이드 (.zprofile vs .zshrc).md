@@ -127,3 +127,140 @@ fi
 - 일반적인 터미널 탭은 interactive shell이므로 `.zshrc`만 읽힘
 - IntelliJ, VSCode 등의 IDE 터미널은 interactive non-login shell로 열림
 - 따라서 IDE 터미널에서 PATH가 안 잡히는 문제는 `.zshrc`에 PATH 설정을 추가하거나 `.zprofile`을 source하면 해결됨
+
+---
+
+## 🔧 트러블슈팅: IntelliJ 터미널 오류
+
+### 😱 문제 상황
+
+IntelliJ 터미널이 갑자기 실행되지 않거나, 터미널을 열 때 에러 메시지가 나타나는 경우가 있습니다.
+
+**주요 원인:** `.zshrc` 파일에 잘못된 설정이나 문법 오류가 있을 때 발생
+
+### 📊 문제 발생 플로우
+
+```mermaid
+flowchart TD
+    Start([🖥️ IntelliJ 터미널 실행]) --> LoadZshrc[📂 ~/.zshrc 파일 로드]
+    LoadZshrc --> CheckSyntax{🔍 문법 검사}
+
+    CheckSyntax -->|✅ 정상| Success([💚 터미널 정상 실행])
+    CheckSyntax -->|❌ 오류 발견| ErrorTypes[⚠️ 오류 유형]
+
+    ErrorTypes --> Type1[🔴 문법 오류<br/>잘못된 스크립트 구문]
+    ErrorTypes --> Type2[🟡 존재하지 않는 명령어<br/>설치 안 된 프로그램 호출]
+    ErrorTypes --> Type3[🟠 잘못된 경로<br/>없는 파일/디렉토리 참조]
+
+    Type1 --> Fail([💥 터미널 실행 실패])
+    Type2 --> Fail
+    Type3 --> Fail
+
+    Fail --> Fix[🛠️ .zshrc 수정]
+    Fix --> Restart[🔄 터미널 재시작]
+    Restart --> LoadZshrc
+
+    style Start fill:#e1f5ff
+    style Success fill:#d4edda
+    style Fail fill:#f8d7da
+    style Fix fill:#fff3cd
+    style CheckSyntax fill:#d1ecf1
+```
+
+### ✅ 해결 방법
+
+#### 1️⃣ **문제가 있는 설정 찾기**
+
+터미널이 열리지 않는다면, 다른 터미널(기본 macOS Terminal.app 등)에서 확인:
+
+```bash
+# .zshrc 파일 직접 실행해서 에러 확인
+zsh -xv ~/.zshrc
+```
+
+#### 2️⃣ **문제 설정 제거 또는 주석 처리**
+
+```bash
+# 에러를 일으키는 라인을 찾아서 주석 처리
+# export WRONG_SETTING="잘못된 값"  # ← 이렇게 주석 처리
+
+# 또는 완전히 삭제
+```
+
+#### 3️⃣ **IntelliJ 터미널 재시작**
+
+- IntelliJ를 완전히 종료 후 재실행
+- 또는 `Terminal` 탭 닫고 다시 열기
+
+### 🎯 자주 발생하는 오류 예시
+
+| 오류 유형 | 예시 | 해결 방법 |
+|----------|------|----------|
+| **존재하지 않는 명령어** | `pyenv init` (pyenv 미설치) | 해당 도구 설치 또는 라인 삭제 |
+| **잘못된 경로** | `source /wrong/path/file.sh` | 경로 수정 또는 파일 생성 |
+| **문법 오류** | `export PATH=/usr/bin` (따옴표 누락 등) | 문법 수정 |
+| **무한 루프** | `.zshrc`에서 `.zshrc` 재호출 | 순환 참조 제거 |
+
+### 💡 예방 팁
+
+✨ `.zshrc` 수정 시 체크리스트:
+
+```bash
+# ✅ 설정 추가 전에 명령어가 설치되어 있는지 확인
+which nvm
+which pyenv
+
+# ✅ 조건부 실행으로 안전하게 작성
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  source "$NVM_DIR/nvm.sh"
+fi
+
+# ✅ 파일 존재 여부 확인 후 source
+if [ -f ~/.custom_aliases ]; then
+  source ~/.custom_aliases
+fi
+```
+
+### 🚨 긴급 복구 방법
+
+터미널이 전혀 열리지 않을 때:
+
+1. **Finder에서 직접 편집**
+   - Finder → `Cmd + Shift + G` → `~/.zshrc` 입력
+   - 텍스트 편집기로 열어서 수정
+
+2. **임시로 .zshrc 비활성화**
+   ```bash
+   # 다른 터미널에서 실행
+   mv ~/.zshrc ~/.zshrc.backup
+   ```
+
+3. **IntelliJ 재시작 후 수정**
+   - 이제 기본 설정으로 터미널이 열림
+   - 천천히 `.zshrc.backup` 내용을 하나씩 복구
+
+---
+
+## 🎓 마무리 정리
+
+**핵심 기억할 것:**
+- 🔵 `.zprofile` = 로그인 시 한 번 (환경 변수)
+- 🟣 `.zshrc` = 터미널 열 때마다 (사용자 설정)
+- 🔧 IntelliJ 터미널 = `.zshrc`만 읽음
+- ⚠️ `.zshrc` 오류 = 터미널 실행 실패 가능
+
+**실무 추천:**
+```bash
+# ~/.zshrc 구조 예시
+# 1. .zprofile 불러오기 (선택)
+[ -f ~/.zprofile ] && source ~/.zprofile
+
+# 2. 안전한 조건부 설정
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+
+# 3. 사용자 alias
+alias ll='ls -al'
+alias gs='git status'
+```
+
+이제 zsh 설정으로 고생할 일이 없을 거예요! 🎉
