@@ -114,6 +114,7 @@
 - [`커머스 팀프로젝트` 개발일지 #15. `📚 학습 및 연구` 일급 컬렉션 vs 확장 함수 (feat. 코틀린 & 자바)](https://github.com/hyunolike/dev-diary/blob/develop/inner-circle/%EC%9D%BC%EA%B8%89%20%EC%BB%AC%EB%A0%89%EC%85%98%20vs%20%ED%99%95%EC%9E%A5%20%ED%95%A8%EC%88%98%20(feat.%20%EC%BD%94%ED%8B%80%EB%A6%B0%20%26%20%EC%9E%90%EB%B0%94).md)
   
 ### 👨‍🌾 개인
+- [`📚 학습 및 연구` macOS + zsh 환경 설정 완벽 가이드 (.zprofile vs .zshrc)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/macOS%20%2B%20zsh%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95%20%EC%99%84%EB%B2%BD%20%EA%B0%80%EC%9D%B4%EB%93%9C%20(.zprofile%20vs%20.zshrc).md)
 - [`📚 학습 및 연구` [Git] rebase 도중 untracked 파일 충돌 원인과 해결 방법](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/rebase%20%EB%8F%84%EC%A4%91%20untracked%20%ED%8C%8C%EC%9D%BC%20%EC%B6%A9%EB%8F%8C%20%EC%9B%90%EC%9D%B8%EA%B3%BC%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95.md)
 - [`📚 학습 및 연구` JUnit 5 & Mockito 정리](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/JUnit%205%20%26%20Mockito%20%EC%A0%95%EB%A6%AC.md)
 - [`📚 학습 및 연구` Git 이미 커밋(푸시)된 일부 파일 제외하는 방법](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Git%20%EC%9D%B4%EB%AF%B8%20%EC%BB%A4%EB%B0%8B(%ED%91%B8%EC%8B%9C)%EB%90%9C%20%EC%9D%BC%EB%B6%80%20%ED%8C%8C%EC%9D%BC%20%EC%A0%9C%EC%99%B8%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.md)
