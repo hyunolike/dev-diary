@@ -29,7 +29,8 @@
 |---|---|
 | `site/astro.config.mjs` | site/base, rehype 플러그인 등록, 마크다운 설정 |
 | `site/src/lib/href.ts` | base를 붙인 URL 생성. 모든 링크의 단일 통로 |
-| `site/src/lib/parse-date.ts` | 본문 날짜 줄 → ISO 날짜 문자열 |
+| `site/src/lib/parse-date.mjs` | 본문 날짜 줄 → ISO 날짜 문자열. `.ts`가 아닌 이유는 `scripts/*.mjs`도 같은 로직을 import해야 하기 때문 |
+| `site/src/lib/parse-date.d.ts` | 위 모듈의 타입 선언 |
 | `site/src/lib/search-index.ts` | 컬렉션 → 검색 인덱스 레코드 변환 |
 | `site/src/data/tags.ts` | 태그 어휘 (Zod enum의 원천) |
 | `site/src/data/series.ts` | 시리즈 슬러그 → 표시 이름/설명/순서 |
@@ -310,11 +311,13 @@ Expected: `https://hyunolike.github.io/dev-diary/`가 열리고 "장현호"가 �
 52편 중 48편은 본문에 날짜 줄이 있고 형식이 두 가지다. 꼬리가 붙은 케이스가 둘 있어 정규식만으로는 부족하다.
 
 **Files:**
-- Create: `site/src/lib/parse-date.ts`
+- Create: `site/src/lib/parse-date.mjs`, `site/src/lib/parse-date.d.ts`
 - Test: `site/src/lib/parse-date.test.ts`
 
 **Interfaces:**
 - Produces: `parsePostDate(markdown: string): string | null` — 본문 전체를 받아 `YYYY-MM-DD`를 반환하거나, 날짜 줄이 없으면 `null`
+
+**`.ts`가 아니라 `.mjs`인 이유:** Task 6의 `scripts/scaffold-frontmatter.mjs`가 같은 파싱 로직을 필요로 한다. `.ts`로 두면 스크립트가 import할 수 없어 정규식을 복제하게 되고, 두 곳이 벌어지면 스캐폴딩이 만든 날짜와 사이트가 읽는 날짜가 어긋난다. 로직은 한 곳에만 둔다.
 
 - [ ] **Step 1: 실패하는 테스트 작성**
 
@@ -322,7 +325,7 @@ Expected: `https://hyunolike.github.io/dev-diary/`가 열리고 "장현호"가 �
 
 ```ts
 import { describe, it, expect } from 'vitest';
-import { parsePostDate } from './parse-date';
+import { parsePostDate } from './parse-date.mjs';
 
 describe('parsePostDate', () => {
   it('작성날짜 YY.MM.DD를 2000년대로 해석한다', () => {
@@ -364,20 +367,20 @@ describe('parsePostDate', () => {
 - [ ] **Step 2: 테스트가 실패하는지 확인**
 
 Run: `cd site && npx vitest run src/lib/parse-date.test.ts`
-Expected: FAIL — `Failed to resolve import "./parse-date"`
+Expected: FAIL — `Failed to resolve import "./parse-date.mjs"`
 
 - [ ] **Step 3: 구현**
 
-`site/src/lib/parse-date.ts`:
+`site/src/lib/parse-date.mjs`:
 
-```ts
+```js
 const LINE = /^>\s*(?:📅\s*)?(?:작성날짜|탐구 일자|작성일)\s*[::]\s*(.+)$/m;
 const YMD_FULL = /^(\d{4})-(\d{1,2})-(\d{1,2})/;
 const YMD_SHORT = /^(\d{2})\.(\d{1,2})\.(\d{1,2})/;
 
-const pad = (n: string) => n.padStart(2, '0');
+const pad = (n) => String(n).padStart(2, '0');
 
-export function parsePostDate(markdown: string): string | null {
+export function parsePostDate(markdown) {
   const line = markdown.match(LINE);
   if (!line) return null;
 
@@ -393,6 +396,12 @@ export function parsePostDate(markdown: string): string | null {
 }
 ```
 
+`site/src/lib/parse-date.d.ts`:
+
+```ts
+export declare function parsePostDate(markdown: string): string | null;
+```
+
 정규식이 줄 시작(`^>`)에 고정돼 있어 본문 중간의 날짜 문자열에는 걸리지 않는다. `match`는 첫 일치만 반환하므로 날짜 줄이 여럿이어도 첫 번째를 쓴다. 값 뒤의 `</br>`나 `(업데이트 날짜: ...)`는 앵커된 패턴이 앞부분만 소비하므로 자동으로 무시된다.
 
 - [ ] **Step 4: 테스트 통과 확인**
@@ -402,22 +411,35 @@ Expected: PASS — 8 tests
 
 - [ ] **Step 5: 실제 52편에 돌려 확인**
 
+`.mjs`라 node로 바로 돌릴 수 있다. 어느 파일이 날짜를 못 뽑는지 이름까지 확인한다.
+
 ```bash
 cd /Users/hyuno/orca/dev-diary/site
 node --input-type=module -e "
-import { readFileSync } from 'fs';
-import { execSync } from 'child_process';
-const { parsePostDate } = await import('./src/lib/parse-date.ts').catch(() => null) ?? {};
-" 2>/dev/null || true
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { parsePostDate } from './src/lib/parse-date.mjs';
+const DIRS = ['개인','inner-circle','업무','k8s','oss','기업-기술-블로그-탐구-일지','오픈소스-프로젝트-분석-일지'];
+let total = 0; const missing = [];
+for (const d of DIRS) for (const f of readdirSync(join('..', d))) {
+  if (!f.endsWith('.md')) continue;
+  total++;
+  if (parsePostDate(readFileSync(join('..', d, f), 'utf8')) === null) missing.push(d + '/' + f);
+}
+console.log('전체', total, '/ 날짜 없음', missing.length);
+missing.forEach(m => console.log('  ' + m));
+"
 ```
 
-TypeScript를 직접 실행할 수 없으므로 vitest로 확인한다. `site/src/lib/parse-date.corpus.test.ts`를 임시로 만들어 실행한 뒤 삭제한다.
+Expected: `전체 52 / 날짜 없음 4`, 그리고 스펙 6절이 지목한 그 4개 파일과 정확히 일치.
+
+추가로 코퍼스 테스트를 영구 테스트로 남긴다. `site/src/lib/parse-date.corpus.test.ts`:
 
 ```ts
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { parsePostDate } from './parse-date';
+import { parsePostDate } from './parse-date.mjs';
 
 const ROOT = new URL('../../../', import.meta.url).pathname;
 const DIRS = ['개인', 'inner-circle', '업무', 'k8s', 'oss', '기업-기술-블로그-탐구-일지', '오픈소스-프로젝트-분석-일지'];
@@ -435,14 +457,15 @@ describe('실제 코퍼스', () => {
 ```
 
 Run: `cd site && npx vitest run src/lib/parse-date.corpus.test.ts`
-Expected: PASS. 실패하면 어느 파일이 빠졌는지 출력해 정규식을 보완한다.
+Expected: PASS. 실패하면 위 node 명령이 출력한 파일 목록으로 정규식을 보완한다.
 
-확인 후 `rm site/src/lib/parse-date.corpus.test.ts`.
+이 테스트는 삭제하지 않고 남긴다. 나중에 글이 추가되거나 날짜 표기가 바뀌면 여기서 잡힌다.
 
 - [ ] **Step 6: 커밋**
 
 ```bash
-git add site/src/lib/parse-date.ts site/src/lib/parse-date.test.ts
+git add site/src/lib/parse-date.mjs site/src/lib/parse-date.d.ts \
+       site/src/lib/parse-date.test.ts site/src/lib/parse-date.corpus.test.ts
 git commit -m "$(cat <<'EOF'
 본문 날짜 줄 파서 추가
 
@@ -922,24 +945,11 @@ import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
+import { parsePostDate } from '../src/lib/parse-date.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..', '..');
 const DIRS = ['개인', 'inner-circle', '업무', 'k8s', 'oss', '기업-기술-블로그-탐구-일지', '오픈소스-프로젝트-분석-일지'];
-
-const LINE = /^>\s*(?:📅\s*)?(?:작성날짜|탐구 일자|작성일)\s*[::]\s*(.+)$/m;
-const pad = (n) => String(n).padStart(2, '0');
-
-function parseDate(md) {
-  const m = md.match(LINE);
-  if (!m) return null;
-  const v = m[1].trim();
-  const full = v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
-  if (full) return `${full[1]}-${pad(full[2])}-${pad(full[3])}`;
-  const short = v.match(/^(\d{2})\.(\d{1,2})\.(\d{1,2})/);
-  if (short) return `20${short[1]}-${pad(short[2])}-${pad(short[3])}`;
-  return null;
-}
 
 function gitFirstCommitDate(path) {
   const out = execSync(
@@ -975,7 +985,7 @@ for (const dir of DIRS) {
     }
 
     const title = extractTitle(md, basename(file, '.md'));
-    const date = parseDate(md) ?? gitFirstCommitDate(join(dir, file));
+    const date = parsePostDate(md) ?? gitFirstCommitDate(join(dir, file));
     const fm = [
       '---',
       `title: ${JSON.stringify(title)}`,
@@ -1145,40 +1155,47 @@ EOF
 **Files:**
 - Create: `site/src/styles/tokens.css`, `site/src/styles/prose.css`
 - Create: `site/src/layouts/Base.astro`
-- Create: `site/public/fonts/` (Pretendard 서브셋, JetBrains Mono)
+- Create: `site/src/assets/fonts/` (Pretendard Variable, JetBrains Mono)
 
 **Interfaces:**
 - Produces: `Base.astro` — props `{ title: string; description?: string }`. 모든 페이지가 감싼다
 
 - [ ] **Step 1: 폰트 내려받기**
 
+`public/`이 아니라 `src/assets/fonts/`에 둔다. Vite가 처리해야 `base`가 반영된 경로로 재작성되기 때문이다.
+
 ```bash
 cd /Users/hyuno/orca/dev-diary/site
-mkdir -p public/fonts
-curl -sL -o public/fonts/PretendardVariable.woff2 \
+mkdir -p src/assets/fonts
+curl -sL -o src/assets/fonts/PretendardVariable.woff2 \
   https://github.com/orioncactus/pretendard/raw/main/packages/pretendard/dist/web/variable/woff2/PretendardVariable.woff2
-curl -sL -o public/fonts/JetBrainsMono.woff2 \
+curl -sL -o src/assets/fonts/JetBrainsMono.woff2 \
   https://github.com/JetBrains/JetBrainsMono/raw/master/fonts/webfonts/JetBrainsMono-Regular.woff2
-ls -lh public/fonts
+ls -lh src/assets/fonts
+file src/assets/fonts/*.woff2
 ```
 
-Expected: 두 파일 모두 0바이트가 아님. 실패하면 URL이 바뀐 것이므로 각 저장소의 최신 릴리스 경로를 확인한다.
+Expected: 두 파일 모두 0바이트가 아니고 `file`이 `Web Open Font Format (Version 2)`로 판별한다. HTML이 나오면 URL이 바뀐 것이므로 각 저장소의 최신 릴리스 경로를 확인한다.
 
 - [ ] **Step 2: 디자인 토큰 작성**
 
 `site/src/styles/tokens.css`:
 
+폰트 경로를 `/dev-diary/fonts/...`로 하드코딩하지 않는다. CSS는 `href()`를 호출할 수 없고, Task 15의 링크 체커는 HTML 속성만 검사하므로 그 위반은 검사망에도 안 걸린다. `base`를 바꾸면 폰트만 조용히 깨진다.
+
+대신 폰트를 `public/`이 아니라 `src/assets/fonts/`에 두고 **CSS에서 상대 경로로 참조**한다. Vite가 `url()`을 처리하면서 `base`가 반영된 해시 경로로 재작성하므로, `base`가 무엇이든 자동으로 맞는다. 부가 효과로 캐시 버스팅도 따라온다.
+
 ```css
 @font-face {
   font-family: 'Pretendard';
-  src: url('/dev-diary/fonts/PretendardVariable.woff2') format('woff2-variations');
+  src: url('../assets/fonts/PretendardVariable.woff2') format('woff2-variations');
   font-weight: 45 920;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('/dev-diary/fonts/JetBrainsMono.woff2') format('woff2');
+  src: url('../assets/fonts/JetBrainsMono.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
@@ -1326,6 +1343,7 @@ code, pre { font-family: var(--font-mono); }
 ---
 import { ClientRouter } from 'astro:transitions';
 import { href } from '../lib/href';
+import pretendardUrl from '../assets/fonts/PretendardVariable.woff2?url';
 import '../styles/tokens.css';
 
 interface Props {
@@ -1334,6 +1352,7 @@ interface Props {
 }
 
 const { title, description = '장현호의 백엔드 개발 기록 아카이브' } = Astro.props;
+
 ---
 
 <html lang="ko">
@@ -1346,7 +1365,7 @@ const { title, description = '장현호의 백엔드 개발 기록 아카이브'
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    <link rel="preload" as="font" type="font/woff2" href={href('/fonts/PretendardVariable.woff2')} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={pretendardUrl} crossorigin />
     <script is:inline>
       (() => {
         const saved = localStorage.getItem('theme');
@@ -1447,7 +1466,7 @@ Expected: `http://localhost:4321/dev-diary/`에서 헤더·푸터가 보이고 �
 - [ ] **Step 6: 커밋**
 
 ```bash
-git add site/src/styles site/src/layouts site/src/pages/index.astro site/public/fonts
+git add site/src/styles site/src/layouts site/src/pages/index.astro site/src/assets/fonts
 git commit -m "$(cat <<'EOF'
 디자인 토큰과 기본 레이아웃 구성
 
@@ -3173,7 +3192,7 @@ GitHub Actions 탭에서 워크플로가 성공하는지 확인한 뒤 `https://
 **타입 일관성 확인**
 
 - `href` / `joinBase` — Task 1에서 정의, 이후 전 태스크에서 동일 이름 사용
-- `parsePostDate(markdown): string | null` — Task 2 정의, Task 6 스크립트가 같은 로직을 JS로 복제 (스크립트는 `.mjs`라 TS를 import할 수 없어 의도적으로 중복. 두 곳의 정규식이 동일해야 한다)
+- `parsePostDate(markdown): string | null` — Task 2가 `src/lib/parse-date.mjs`에 정의, Task 6의 `scripts/scaffold-frontmatter.mjs`가 import. 로직은 한 곳에만 있다
 - `TAGS` / `SERIES` — Task 3 정의, Task 6 스키마와 Task 12·14가 소비
 - `image-manifest.json` 형태 `{ uuid: { width, height } }` — Task 4 생성, Task 5 소비
 - `SearchRecord` 필드 7개 — Task 9 정의, Task 10의 `Record` 인터페이스와 일치
