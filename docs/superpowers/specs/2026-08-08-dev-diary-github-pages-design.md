@@ -4,7 +4,7 @@
 
 ## 1. 배경
 
-`dev-diary` 저장소에는 2024~2025년에 쓴 기술 기록 53편이 7개 디렉터리에 흩어져 있다.
+`dev-diary` 저장소에는 2024~2025년에 쓴 기술 기록 52편이 7개 디렉터리에 흩어져 있다.
 현재 유일한 진입점은 23KB짜리 `README.md`이며, URL 인코딩된 GitHub blob 링크를 수동으로
 나열한 형태다. 검색·태그·시리즈 연결이 없고, 읽는 사람이 "이 저자가 무엇을 잘하는지"를
 파악하려면 링크를 하나씩 눌러보는 수밖에 없다.
@@ -20,7 +20,7 @@
 2. 무엇을 깊게 파봤는가 (대표 기록 4건)
 3. 어떤 기술을 실제로 다뤄봤는가 (스택 → 근거 글로 즉시 이동 가능)
 
-그 다음 관심이 생긴 사람이 53편을 **검색·필터로 탐색**할 수 있어야 한다.
+그 다음 관심이 생긴 사람이 52편을 **검색·필터로 탐색**할 수 있어야 한다.
 
 ### 성공 기준
 
@@ -29,7 +29,7 @@
 | Lighthouse (모바일) | Performance / Accessibility / Best Practices / SEO 각 95점 이상 |
 | LCP | Slow 4G 시뮬레이션에서 2.5초 이내 |
 | 반응형 | 375px 폭에서 가로 스크롤 0 |
-| 콘텐츠 | 53편 전부 개별 페이지 존재, 내부 링크 깨짐 0건 |
+| 콘텐츠 | 52편 전부 개별 페이지 존재, 내부 링크 깨짐 0건 |
 | 이미지 | 187개 전부 자체 호스팅, 외부 요청 0건 |
 
 ## 3. 비목표
@@ -63,7 +63,7 @@
 ```
 https://hyunolike.github.io/dev-diary/
 ├─ /                      랜딩
-├─ /archive               전체 53편 · 검색 · 태그 필터 · 타임라인
+├─ /archive               전체 52편 · 검색 · 태그 필터 · 타임라인
 ├─ /posts/<slug>          글 상세
 ├─ /series/<slug>         시리즈 상세
 └─ /tags/<tag>            태그별 목록
@@ -81,7 +81,7 @@ https://hyunolike.github.io/dev-diary/
 2. **대표 기록 4건** — 카드마다 제목 + `문제 → 판단 → 결과` 한 문장
 3. **기술 스택** — 글에서 실제로 다룬 기술만. 각 뱃지는 클릭 가능하며 `/archive`로
    해당 태그가 적용된 상태로 이동한다
-4. **아카이브 미리보기** — 최신 6편 + "전체 53편 보기"
+4. **아카이브 미리보기** — 최신 6편 + "전체 52편 보기"
 
 대표 기록 카드에 제목만 넣지 않는 것이 이 설계의 핵심이다. 채용 시장 조사에 따르면
 평가자는 "무엇을 했는지보다 어떻게 설명하는지"를 본다. 카드 자체가 의사결정 서사를
@@ -98,11 +98,11 @@ https://hyunolike.github.io/dev-diary/
 
 ## 6. 콘텐츠 파이프라인
 
-원본 `.md` 53개는 **현재 위치를 그대로 유지한다.** GitHub에서 직접 읽던 기존 링크가
+원본 `.md` 52개는 **현재 위치를 그대로 유지한다.** GitHub에서 직접 읽던 기존 링크가
 깨지지 않도록 하기 위함이다. 각 파일 상단에 frontmatter만 주입한다.
 
 ```
-53개 .md (frontmatter 주입, 위치 유지)
+52개 .md (frontmatter 주입, 위치 유지)
    └→ Astro content collection (Zod 스키마 검증)
         ├→ 정적 HTML 페이지 (/posts/<slug>)
         └→ search-index.json
@@ -124,12 +124,30 @@ featured: true                  # 기본 false
 ---
 ```
 
-Zod 스키마로 검증하므로 오타나 필드 누락은 빌드 실패로 드러난다. 53개를 눈으로 검수할
+Zod 스키마로 검증하므로 오타나 필드 누락은 빌드 실패로 드러난다. 52개를 눈으로 검수할
 필요가 없다.
 
-`date`는 기존 본문의 `> 작성날짜: 24.09.11` 또는 `> 📅 탐구 일자: 2024-10-28` 줄에서
-파싱한다. 해당 줄이 없는 글은 `git log --diff-filter=A --format=%aI -- <file>`로 얻은
-최초 커밋 날짜를 쓴다.
+`date`는 기존 본문의 날짜 줄에서 파싱한다. 52편 중 48편에 날짜 줄이 있다.
+
+| 형식 | 예 | 편수 |
+|---|---|---|
+| `> 작성날짜: YY.MM.DD` | `> 작성날짜: 24.09.11` | 45 |
+| `> 📅 탐구 일자: YYYY-MM-DD` | `> 📅 탐구 일자: 2024-10-28` | 3 |
+
+두 개는 꼬리가 붙어 있어 파서가 처리해야 한다.
+
+- `> 작성날짜: 24.11.17 </br>` — 줄 끝 HTML 태그
+- `> 작성날짜: 24.08.29 (업데이트 날짜: 24.09.11)` — 최초 작성일 `24.08.29`를 쓴다
+
+날짜 줄이 없는 4편은 `git log --diff-filter=A --format=%aI -- <file>`로 얻은 최초 커밋
+날짜를 쓴다.
+
+- `업무/SVN 주요 용어 설명.md`
+- `개인/macOS + zsh 환경 설정 완벽 가이드 (.zprofile vs .zshrc).md`
+- `오픈소스-프로젝트-분석-일지/「EmergencyAssistant」 프로젝트 백엔드 개발 분석.md`
+- `오픈소스-프로젝트-분석-일지/「고스락」 프로젝트 백엔드 개발 분석기.md`
+
+`YY`는 2000년대로 해석한다 (`24` → `2024`).
 
 `summary`는 글을 읽고 사람이 쓴다. 본문 첫 줄을 자르는 방식은 쓰지 않는다 — 상당수 글이
 목차나 시리즈 안내로 시작해 요약으로 부적절하다.
@@ -139,7 +157,7 @@ Zod 스키마로 검증하므로 오타나 필드 누락은 빌드 실패로 드
 태그는 자유 입력이 아니라 **사전에 정의된 어휘에서만** 고른다. 같은 개념이 `k8s`와
 `Kubernetes`로 갈리면 필터가 무너지기 때문이다. Zod 스키마에 enum으로 못 박는다.
 
-초기 어휘(글 53편을 읽고 확정하되, 아래를 출발점으로 한다):
+초기 어휘(글 52편을 읽고 확정하되, 아래를 출발점으로 한다):
 
 - 언어/런타임: `Kotlin` `Java` `JavaScript`
 - 프레임워크: `Spring Boot` `Spring Security` `JPA` `Vue`
@@ -206,7 +224,21 @@ Astro 아일랜드로 분리해, 페이지 본체는 정적 HTML로 즉시 렌�
 
 ## 9. 이미지
 
-본문 이미지 187개가 전부 `https://github.com/user-attachments/assets/<uuid>` 형태다.
+본문 이미지 187개(UUID 기준 전부 고유)가 `https://github.com/user-attachments/assets/<uuid>`
+형태다. 구형 `user-images.githubusercontent.com` URL은 없다.
+
+**작성 문법이 두 가지로 갈린다. 이것이 구현 방식을 결정한다.**
+
+| 문법 | 개수 |
+|---|---|
+| raw HTML `<img width="1216" alt="image" src="..." />` | 170 |
+| 마크다운 `![...](...)` | 17 |
+
+remark는 마크다운 AST를 다루므로 raw HTML을 통짜 문자열 노드로만 본다. Astro의 이미지
+최적화 역시 `![]()` 문법과 ESM import에만 적용되고 raw `<img>`는 그대로 통과시킨다.
+따라서 remark 플러그인 + Astro 최적화 조합으로는 **187개 중 17개만 처리되고 170개는 여전히
+GitHub에서 로드된다.** rehype 기반으로 가야 한다.
+
 검증 결과 외부 사이트에서 로드는 가능하나(HTTP 200), 세 가지 문제가 있다.
 
 1. 원본이 8192×1892 / 725KB PNG 수준으로 과대하다
@@ -215,19 +247,44 @@ Astro 아일랜드로 분리해, 페이지 본체는 정적 HTML로 즉시 렌�
 
 **전부 내려받아 자체 호스팅한다.**
 
-- 저장 위치: `site/src/assets/posts/<uuid>.<ext>`
-- 원본 `.md`에 가하는 변경은 6절의 frontmatter 주입뿐이며, 본문은 한 글자도 건드리지
-  않는다. 이미지 URL도 그대로 둔다. remark 플러그인이 빌드 시
-  `github.com/user-attachments/assets/<uuid>` 패턴을 로컬 asset으로 치환한다.
-  UUID를 키로 매핑하므로 안정적이다
-- Astro 이미지 최적화가 WebP 변환·리사이즈·`loading="lazy"`·명시적 width/height를 처리한다
-  (width/height는 레이아웃 시프트 방지에 필요하며 Lighthouse 점수에 직결된다)
-- 예상 용량: 원본 약 55MB → 8~15MB. GitHub Pages 한도 1GB에 여유가 크다
+최적화를 Astro에 맡길 수 없으므로 **다운로드 스크립트에서 직접 수행한다.**
 
-다운로드는 일회성 스크립트(`site/scripts/fetch-images.mjs`)로 수행하고, 받은 이미지는
-저장소에 커밋한다. 빌드 때마다 네트워크에 의존하지 않기 위함이다.
+일회성 스크립트 `site/scripts/fetch-images.mjs`가 다음을 처리한다.
 
-원본 마크다운을 GitHub에서 직접 볼 때는 기존 외부 URL이 그대로 동작하므로 변화가 없다.
+1. 52편 전체에서 UUID를 수집한다 (두 문법 모두 대상)
+2. 각 이미지를 내려받아 sharp로 WebP 변환한다. 최대 폭 1600px으로 축소하되 원본이 더
+   작으면 확대하지 않는다
+3. `site/public/img/<uuid>.webp`로 저장한다
+4. `site/src/data/image-manifest.json`에 `{ uuid: { width, height } }`를 기록한다.
+   변환 후 실제 픽셀 크기이며, 레이아웃 시프트 방지용 `width`/`height` 속성의 근거가 된다
+
+`public/`에 두는 이유는 Astro의 asset 파이프라인을 우회하기 때문이다. 이미 최적화된
+파일이므로 재처리가 불필요하고, rehype 단계에서 경로를 문자열로 계산할 수 있어 단순하다.
+
+변환된 이미지와 매니페스트는 저장소에 커밋한다. 빌드 때마다 네트워크에 의존하지 않기
+위함이다.
+
+### rehype 플러그인
+
+`site/src/plugins/rehype-local-images.mjs`가 마크다운→HTML 변환 후의 HTML AST를 순회하며
+`<img>` 엘리먼트를 처리한다. 이 단계에서는 raw HTML로 쓰인 170개도 정상 엘리먼트 노드이므로
+두 문법이 동일하게 잡힌다.
+
+각 `<img>`에 대해:
+
+- `src`가 `github.com/user-attachments/assets/<uuid>` 패턴이면 `${base}/img/<uuid>.webp`로
+  치환한다
+- 매니페스트의 실제 크기로 `width`/`height`를 설정한다. 원본 태그의 `width` 속성(170개
+  전부 보유)은 표시 폭 의도이므로 CSS `max-width`로 옮기고, 속성값 자체는 실제 크기로
+  덮어쓴다. 속성의 width/height는 브라우저가 종횡비를 계산하는 용도라 실제 값이어야 한다
+- `loading="lazy"`, `decoding="async"`를 추가한다
+- 매니페스트에 없는 UUID를 만나면 **빌드를 실패시킨다.** 조용히 넘어가면 깨진 이미지가
+  배포된다
+
+원본 `.md`에 가하는 변경은 6절의 frontmatter 주입뿐이다. 본문과 이미지 URL은 한 글자도
+건드리지 않으므로, GitHub에서 원본을 직접 볼 때는 기존 외부 URL이 그대로 동작한다.
+
+예상 용량: 원본 약 55MB → 8~15MB. GitHub Pages 한도 1GB에 여유가 크다.
 
 ## 10. 디자인 방향
 
@@ -254,13 +311,15 @@ dev-diary/
 ├─ site/
 │  ├─ astro.config.mjs
 │  ├─ package.json / package-lock.json
-│  ├─ scripts/fetch-images.mjs
+│  ├─ scripts/fetch-images.mjs                 이미지 다운로드 + WebP 변환 (일회성)
+│  ├─ public/img/<uuid>.webp                   변환된 이미지 187개
 │  └─ src/
-│     ├─ content.config.ts                    컬렉션 정의 + Zod 스키마
+│     ├─ content.config.ts                     컬렉션 정의 + Zod 스키마
 │     ├─ data/series.ts
-│     ├─ assets/posts/                        내려받은 이미지
+│     ├─ data/tags.ts                          태그 어휘 (Zod enum의 원천)
+│     ├─ data/image-manifest.json              uuid → 실제 width/height
 │     ├─ components/ layouts/ pages/
-│     └─ plugins/remark-local-images.mjs
+│     └─ plugins/rehype-local-images.mjs
 └─ .github/workflows/deploy.yml
 ```
 
@@ -308,7 +367,7 @@ export default defineConfig({
    깨짐 0건. `base` 누락은 배포 후에만 드러나므로 이 검사가 필수다
 3. `npx lighthouse` 모바일 프로파일 — 4개 항목 95점 이상
 4. 375px / 768px / 1440px 폭에서 가로 스크롤 없음 확인
-5. `dist/`에 글 페이지 53개, 시리즈 페이지 4개, 랜딩·아카이브 각 1개가 생성됐는지 확인.
+5. `dist/`에 글 페이지 52개, 시리즈 페이지 4개, 랜딩·아카이브 각 1개가 생성됐는지 확인.
    태그 페이지는 최종 확정된 어휘 수와 일치해야 한다
 6. 외부 이미지 요청 0건 (네트워크 탭에서 `user-attachments` 호출 없음)
 
@@ -316,6 +375,6 @@ export default defineConfig({
 
 **GitLab 실습 자료 노출 여부.** README에 예약 대기열 시스템, 선착순 티켓 구매, API 통합
 시스템 등 실습 프로젝트 5건이 GitLab 링크로 걸려 있다. 채용 시장 조사에서 평가자가
-"실제 프로젝트와 결과물"을 가장 먼저 본다고 나온 만큼, 글 53편보다 강한 소재일 수 있다.
+"실제 프로젝트와 결과물"을 가장 먼저 본다고 나온 만큼, 글 52편보다 강한 소재일 수 있다.
 현재는 링크 노출 대상에서 제외하기로 결정돼 설계에 포함하지 않았다. 마음이 바뀌면
 랜딩에 "실습 프로젝트" 블록을 추가하는 것으로 대응한다 — 구조 변경 없이 가능하다.
