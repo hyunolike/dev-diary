@@ -893,7 +893,7 @@ export default function rehypeLocalImages(options = {}) {
 - [ ] **Step 4: 테스트 통과 확인**
 
 Run: `cd site && npx vitest run src/plugins/rehype-local-images.test.ts`
-Expected: PASS — 8 tests
+Expected: PASS — 10 tests
 
 - [ ] **Step 5: astro.config.mjs에 등록**
 
