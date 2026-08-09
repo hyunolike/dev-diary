@@ -277,6 +277,8 @@ GitHub에서 로드된다.** rehype 기반으로 가야 한다.
 
 ### rehype 플러그인
 
+Astro 설정에서 `rehype-raw`를 이 플러그인보다 먼저 등록해야 한다. Astro는 자체 `rehype-raw`를 사용자 플러그인 뒤에 돌리기 때문에, 그대로 두면 raw `<img>` 170개가 아직 엘리먼트가 아니어서 걸리지 않는다.
+
 `site/src/plugins/rehype-local-images.mjs`가 마크다운→HTML 변환 후의 HTML AST를 순회하며
 `<img>` 엘리먼트를 처리한다. 이 단계에서는 raw HTML로 쓰인 170개도 정상 엘리먼트 노드이므로
 두 문법이 동일하게 잡힌다.

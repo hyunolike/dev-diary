@@ -929,7 +929,22 @@ Astro 7은 전자를 폐기 예정으로 표시하고 빌드마다 다음 경고
 `dependencies`에 넣는다. `unified()`는 `gfm`과 `smartypants`를 기본값 `true`로 유지하므로
 기존 렌더링 동작은 달라지지 않는다.
 
-Astro는 마크다운 안의 raw HTML을 기본으로 통과시키므로 `rehype-raw`를 별도 등록할 필요가 없다. 등록 후 실제 글에서 `<img>`가 엘리먼트 노드로 잡히는지는 Task 8에서 확인한다.
+**`rehype-raw`를 우리 플러그인보다 먼저 직접 등록해야 한다.** 초안에는 "Astro가 raw HTML을
+알아서 통과시키므로 불필요하다"고 적었으나 틀렸다.
+
+`remark-rehype`는 `allowDangerousHtml`로 원본 HTML을 파싱하지 않은 `raw` 노드로 남겨두고,
+Astro 내부 파이프라인은 **우리가 지정한 `rehypePlugins` 이후에야** 자체 `rehype-raw`를
+돌려 그 노드를 실제 엘리먼트로 바꾼다. 그 순서대로면 `rehypeLocalImages`가 순회할 때
+raw `<img>` 170개는 아직 엘리먼트가 아니라서 `visit(tree, 'element')`에 걸리지 않는다.
+마크다운 `![]()` 16개만 처리되고 170개는 GitHub에서 계속 로드된다 — 유닛 테스트는
+자체 파이프라인에서 `rehype-raw`를 먼저 돌리므로 이 차이가 드러나지 않는다.
+
+```js
+rehypePlugins: [rehypeRaw, [rehypeLocalImages, { base: BASE }]],
+```
+
+이미 파싱된 트리에는 `raw` 노드가 없으므로 Astro가 뒤에 `rehype-raw`를 한 번 더 돌려도
+무해하다. Task 8에서 `dist/`에 `user-attachments`가 0건인지로 검증한다.
 
 - [ ] **Step 6: 커밋**
 
