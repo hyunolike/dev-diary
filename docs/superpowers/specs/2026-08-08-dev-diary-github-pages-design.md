@@ -30,7 +30,7 @@
 | LCP | Slow 4G 시뮬레이션에서 2.5초 이내 |
 | 반응형 | 375px 폭에서 가로 스크롤 0 |
 | 콘텐츠 | 52편 전부 개별 페이지 존재, 내부 링크 깨짐 0건 |
-| 이미지 | 187개 전부 자체 호스팅, 외부 요청 0건 |
+| 이미지 | 186개 전부 자체 호스팅, 외부 요청 0건 |
 
 ## 3. 비목표
 
@@ -230,7 +230,7 @@ Astro 아일랜드로 분리해, 페이지 본체는 정적 HTML로 즉시 렌�
 
 ## 9. 이미지
 
-본문 이미지 187개(UUID 기준 전부 고유)가 `https://github.com/user-attachments/assets/<uuid>`
+본문 이미지 186개(UUID 기준 전부 고유)가 `https://github.com/user-attachments/assets/<uuid>`
 형태다. 구형 `user-images.githubusercontent.com` URL은 없다.
 
 **작성 문법이 두 가지로 갈린다. 이것이 구현 방식을 결정한다.**
@@ -238,11 +238,11 @@ Astro 아일랜드로 분리해, 페이지 본체는 정적 HTML로 즉시 렌�
 | 문법 | 개수 |
 |---|---|
 | raw HTML `<img width="1216" alt="image" src="..." />` | 170 |
-| 마크다운 `![...](...)` | 17 |
+| 마크다운 `![...](...)` | 16 |
 
 remark는 마크다운 AST를 다루므로 raw HTML을 통짜 문자열 노드로만 본다. Astro의 이미지
 최적화 역시 `![]()` 문법과 ESM import에만 적용되고 raw `<img>`는 그대로 통과시킨다.
-따라서 remark 플러그인 + Astro 최적화 조합으로는 **187개 중 17개만 처리되고 170개는 여전히
+따라서 remark 플러그인 + Astro 최적화 조합으로는 **186개 중 16개만 처리되고 170개는 여전히
 GitHub에서 로드된다.** rehype 기반으로 가야 한다.
 
 검증 결과 외부 사이트에서 로드는 가능하나(HTTP 200), 세 가지 문제가 있다.
@@ -318,7 +318,7 @@ dev-diary/
 │  ├─ astro.config.mjs
 │  ├─ package.json / package-lock.json
 │  ├─ scripts/fetch-images.mjs                 이미지 다운로드 + WebP 변환 (일회성)
-│  ├─ public/img/<uuid>.webp                   변환된 이미지 187개
+│  ├─ public/img/<uuid>.webp                   변환된 이미지 186개
 │  └─ src/
 │     ├─ content.config.ts                     컬렉션 정의 + Zod 스키마
 │     ├─ data/series.ts

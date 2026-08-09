@@ -4,7 +4,7 @@
 
 **Goal:** `dev-diary` 저장소의 기술 기록 52편을 채용담당자용 정적 사이트로 만들어 `https://hyunolike.github.io/dev-diary/`에 배포한다.
 
-**Architecture:** Astro 7 정적 빌드. 원본 마크다운은 저장소 루트에 그대로 두고 frontmatter만 주입해 Astro 콘텐츠 컬렉션으로 읽는다. 본문 이미지 187개는 사전에 내려받아 WebP로 변환한 뒤 `public/`에서 서빙하고, rehype 플러그인이 빌드 시 `<img src>`를 로컬 경로로 치환한다. 인터랙션은 UI 프레임워크 없이 `.astro` 파일의 순수 `<script>`로 구현한다.
+**Architecture:** Astro 7 정적 빌드. 원본 마크다운은 저장소 루트에 그대로 두고 frontmatter만 주입해 Astro 콘텐츠 컬렉션으로 읽는다. 본문 이미지 186개는 사전에 내려받아 WebP로 변환한 뒤 `public/`에서 서빙하고, rehype 플러그인이 빌드 시 `<img src>`를 로컬 경로로 치환한다. 인터랙션은 UI 프레임워크 없이 `.astro` 파일의 순수 `<script>`로 구현한다.
 
 **Tech Stack:** Astro 7.2.0, TypeScript, Zod (Astro 내장), sharp, vitest, GitHub Actions
 
@@ -593,7 +593,7 @@ EOF
 
 **Files:**
 - Create: `site/scripts/fetch-images.mjs`
-- Generate: `site/public/img/<uuid>.webp` (187개), `site/src/data/image-manifest.json`
+- Generate: `site/public/img/<uuid>.webp` (186개), `site/src/data/image-manifest.json`
 
 **Interfaces:**
 - Consumes: 저장소 루트의 `.md` 52편
@@ -688,7 +688,7 @@ main();
 - [ ] **Step 2: 실행**
 
 Run: `cd site && npm run fetch-images`
-Expected: `발견한 이미지: 187개`로 시작해 187개 전부 성공. 마지막 줄이 `성공 187 / 발견 187`.
+Expected: `발견한 이미지: 186개`로 시작해 186개 전부 성공. 마지막 줄이 `성공 186 / 발견 186`.
 
 실패가 나면 재실행한다. 반복 실패하는 UUID는 원본이 삭제된 것이므로 어느 글에 있는지 찾아 기록해 둔다.
 
@@ -711,7 +711,7 @@ console.log(over.length === 0 ? 'OK' : 'FAIL: ' + JSON.stringify(over));
 "
 ```
 
-Expected: 187 / 187 / 8~15MB 범위 / `OK`
+Expected: 186 / 186 / 8~15MB 범위 / `OK`
 
 - [ ] **Step 4: 커밋**
 
@@ -719,12 +719,12 @@ Expected: 187 / 187 / 8~15MB 범위 / `OK`
 cd /Users/hyuno/orca/dev-diary
 git add site/scripts/fetch-images.mjs site/public/img site/src/data/image-manifest.json
 git commit -m "$(cat <<'EOF'
-본문 이미지 187개를 내려받아 WebP로 변환
+본문 이미지 186개를 내려받아 WebP로 변환
 
 원본이 8192x1892 PNG 같은 크기라 그대로 쓰면 LCP 기준을 못 맞춘다. GitHub이
 매 요청마다 S3 presigned URL로 302 리다이렉트하는 것도 왕복을 늘린다.
 
-Astro의 이미지 최적화는 raw <img> 태그에 적용되지 않는데 187개 중 170개가
+Astro의 이미지 최적화는 raw <img> 태그에 적용되지 않는데 186개 중 169개가
 그 형태다. 그래서 최적화를 Astro에 맡기지 않고 다운로드 시점에 sharp로
 직접 수행한다. 매니페스트의 실제 크기는 레이아웃 시프트 방지용 width/height의
 근거가 된다.
@@ -909,7 +909,7 @@ git add site/src/plugins/ site/astro.config.mjs site/package.json site/package-l
 git commit -m "$(cat <<'EOF'
 이미지 src를 로컬 WebP로 치환하는 rehype 플러그인 추가
 
-본문 이미지 187개 중 170개가 raw <img> 태그다. remark는 raw HTML을 통짜
+본문 이미지 186개 중 169개가 raw <img> 태그다. remark는 raw HTML을 통짜
 문자열 노드로만 보기 때문에 이 170개를 다룰 수 없다. 마크다운을 HTML로
 변환한 뒤의 AST를 다루는 rehype 단계에서는 두 문법이 모두 정상 엘리먼트로
 잡힌다.
@@ -1774,7 +1774,7 @@ echo -n "남아있는 외부 이미지 참조: "; grep -rl "user-attachments" di
 echo -n "로컬 이미지 참조: "; grep -rho '/dev-diary/img/[a-zA-Z0-9-]*\.webp' dist/ | sort -u | wc -l
 ```
 
-Expected: `52` / `0` / `187`
+Expected: `52` / `0` / `186`
 
 외부 참조가 0이 아니면 rehype 플러그인이 해당 `<img>`를 못 잡은 것이다. 어느 파일인지 찾아 태그 형태를 확인한다.
 
@@ -1796,7 +1796,7 @@ git add site/src/pages/posts site/src/layouts/Post.astro site/src/components
 git commit -m "$(cat <<'EOF'
 글 상세 페이지와 목차 구현
 
-이미지 187개가 전부 로컬 WebP로 치환되는 것을 빌드 산출물에서 확인했다.
+이미지 186개가 전부 로컬 WebP로 치환되는 것을 빌드 산출물에서 확인했다.
 dist에 user-attachments 참조가 0건이다.
 
 목차는 IntersectionObserver로 현재 위치를 표시하되 1100px 미만에서는 숨긴다.
