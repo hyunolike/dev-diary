@@ -1,3 +1,14 @@
+---
+title: "SVN 병합 충돌은 어떻게 해결할까"
+slug: svn-병합-충돌은-어떻게-해결할까
+date: "2025-02-23"
+category: 업무
+tags: ["SVN", "트러블슈팅"]
+series: svn
+seriesOrder: 4
+summary: "update 중 충돌이 나면 SVN이 만들어 두는 .mine·.rNNN 파일이 각각 무엇인지 짚고, mine-full·theirs-full·수동 편집 세 갈래로 해결한 뒤 resolved로 닫는 절차를 정리했다."
+featured: false
+---
 ## SVN 병합 충돌은 어떻게 해결할까
 > 작성날짜: 25.02.23
 

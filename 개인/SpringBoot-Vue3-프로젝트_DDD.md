@@ -1,3 +1,12 @@
+---
+title: "Spring Boot + Vue3 DDD"
+slug: spring-boot-vue3-ddd
+date: "2025-07-14"
+category: 개인
+tags: ["Spring Boot", "Vue", "DDD", "아키텍처"]
+summary: "Request에서 Command, Entity를 거쳐 Response로 이어지도록 계층별 객체를 갈라 스프링 부트 패키지 구조를 잡고, 같은 기준으로 Vue 3 쪽 구조와 견줘본 정리."
+featured: false
+---
 ## Spring Boot + Vue3 DDD 
 > 작성날짜: 25.07.14
 

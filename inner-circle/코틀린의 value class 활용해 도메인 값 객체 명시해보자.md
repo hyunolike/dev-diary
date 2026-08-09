@@ -1,3 +1,12 @@
+---
+title: "코틀린의 value class 활용해 도메인 값 객체 명시해보자"
+slug: 코틀린의-value-class-활용해-도메인-값-객체-명시해보자
+date: "2024-09-23"
+category: inner-circle
+tags: ["Kotlin", "DDD"]
+summary: "주문번호처럼 그냥 문자열로 흘러다니던 값을 코틀린 value class로 감싸 도메인 값 객체임을 타입으로 드러내고, data class와 무엇이 다른지 비교했다."
+featured: false
+---
 ## 코틀린의 value class 활용해 도메인 값 객체 명시해보자
 > 작성날짜: 24.09.23
 

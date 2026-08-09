@@ -1,3 +1,14 @@
+---
+title: "Kubernetes Finalizer 정리"
+slug: kubernetes-finalizer-정리
+date: "2025-06-07"
+category: k8s
+tags: ["Kubernetes", "Linux", "트러블슈팅"]
+series: k8s
+seriesOrder: 4
+summary: "네임스페이스가 Terminating에서 멈춰 지워지지 않는 이유를 Finalizer 동작 구조로 설명하고, 컨트롤러가 죽어 정리가 끝나지 않을 때 finalizer를 걷어내 강제 삭제한 절차와 그 위험을 남겼다."
+featured: false
+---
 ## Kubernetes Finalizer 정리
 > 작성날짜: 25.06.07
 

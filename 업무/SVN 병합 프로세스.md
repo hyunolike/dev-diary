@@ -1,3 +1,14 @@
+---
+title: "SVN 병합 프로세스"
+slug: svn-병합-프로세스
+date: "2025-02-23"
+category: 업무
+tags: ["SVN"]
+series: svn
+seriesOrder: 3
+summary: "브랜치 작업 중 trunk를 따라가는 병합과 작업을 끝내고 trunk로 되돌리는 병합을 구분하고, 리비전 범위·재통합·체리픽 세 가지 병합 유형과 TortoiseSVN 조작 순서를 정리했다."
+featured: false
+---
 ## SVN 병합 프로세스
 > 작성날짜: 25.02.23
 

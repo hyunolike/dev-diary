@@ -1,3 +1,12 @@
+---
+title: "Jackson이 JSON 직렬화하는 방식"
+slug: jackson이-json-직렬화하는-방식
+date: "2025-07-14"
+category: 개인
+tags: ["Java", "Spring Boot"]
+summary: "getter 없는 응답 객체가 빈 JSON이나 406을 뱉는 이유를 Jackson의 직렬화 우선순위(게터 우선, 그다음 public 필드)로 짚은 짧은 정리."
+featured: false
+---
 ## Jackson이 JSON 직렬화하는 방식
 > 작성날짜: 25.07.14
 

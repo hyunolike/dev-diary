@@ -1,3 +1,12 @@
+---
+title: "pull request 진행 시 Git Confilct Solution (feat. rebase)"
+slug: pull-request-진행-시-git-confilct-solution-feat-rebase
+date: "2024-09-23"
+category: inner-circle
+tags: ["Git", "트러블슈팅"]
+summary: "코드리뷰가 끝난 PR이 메인 브랜치와 충돌했을 때 merge 대신 rebase로 이력을 일직선으로 유지하며 푼 과정. GitHub의 세 가지 머지 방식 차이도 함께 짚었다."
+featured: false
+---
 ## pull request 진행 시 Git Confilct Solution (feat. rebase)
 > 작성날짜: 24.09.23
 

@@ -1,3 +1,14 @@
+---
+title: "모니터링 설치 시 CNI 플러그인 이슈"
+slug: 모니터링-설치-시-cni-플러그인-이슈
+date: "2025-06-07"
+category: k8s
+tags: ["Kubernetes", "Linux", "트러블슈팅"]
+series: k8s
+seriesOrder: 2
+summary: "프로메테우스와 Loki를 올렸는데 Pod가 READY 1/1이 되지 않고 멈춘 원인이 CNI 플러그인 부재였음을 확인하고, Calico를 설치해 Pod IP 할당부터 되살린 기록."
+featured: false
+---
 ## 모니터링 설치 시 CNI 플러그인 이슈
 > 작성날짜: 25.06.07
 ### 요약

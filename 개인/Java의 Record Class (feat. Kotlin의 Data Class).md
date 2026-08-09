@@ -1,3 +1,12 @@
+---
+title: "Java의 Record Class (feat. Kotlin의 Data Class)"
+slug: java의-record-class-feat-kotlin의-data-class
+date: "2024-10-27"
+category: 개인
+tags: ["Java", "Kotlin"]
+summary: "자바 Record를 코틀린 Data Class와 나란히 놓고, 계층 사이 데이터 전달(DTO) 지점에서 두 언어가 같은 문제를 어떻게 푸는지 비교한 정리."
+featured: false
+---
 ## Java의 Record Class (feat. Kotlin의 Data Class)
 > 작성날짜: 24.10.27
 

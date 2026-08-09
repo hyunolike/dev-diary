@@ -1,3 +1,12 @@
+---
+title: "JUnit 5 & Mockito 정리"
+slug: junit-5-mockito-정리
+date: "2025-08-17"
+category: 개인
+tags: ["테스트", "Java"]
+summary: "JUnit 5 애노테이션과 Assertion부터 Mockito의 스터빙·호출 검증·ArgumentCaptor, 테스트 더블 다섯 종류까지 실제로 쓰는 문법만 예제로 모아둔 장문의 레퍼런스다."
+featured: false
+---
 ## JUnit 5 & Mockito 정리
 > 작성날짜: 25.08.17
 

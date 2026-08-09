@@ -1,3 +1,12 @@
+---
+title: "Spring Boot (Kotlin, Gradle) + Docker 를 AWS 배포해보자"
+slug: spring-boot-kotlin-gradle-docker-를-aws-배포해보자
+date: "2024-08-29"
+category: inner-circle
+tags: ["AWS", "Docker", "CI/CD", "Redis"]
+summary: "컨테이너 서비스를 비교해 Fargate를 고른 이유부터 시작해, JWT 검증용 레디스 캐시와 외부 통신(NAT), 이미지 관리, 상태 점검을 하나씩 붙여가며 배포 자동화와 클라우드 구조를 키워간 설계 기록."
+featured: false
+---
 ## Spring Boot (Kotlin, Gradle) + Docker 를 AWS 배포해보자 
 > 작성날짜: 24.08.29 (업데이트 날짜: 24.09.11)
 

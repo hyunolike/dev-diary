@@ -1,3 +1,14 @@
+---
+title: "SVN에 대해 알아보자"
+slug: svn에-대해-알아보자
+date: "2025-02-23"
+category: 업무
+tags: ["SVN"]
+series: svn
+seriesOrder: 1
+summary: "보안 정책 때문에 Git을 쓸 수 없는 현장에서 SVN을 맡게 되어, 클라이언트-서버 모델과 trunk/branches/tags 저장소 구조부터 짚고 들어간 시리즈의 첫 글."
+featured: false
+---
 ## SVN에 대해 알아보자
 > 작성날짜: 25.02.23
 

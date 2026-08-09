@@ -1,3 +1,12 @@
+---
+title: "빌드 도구 Vite(비트)"
+slug: 빌드-도구-vite비트
+date: "2025-07-11"
+category: 개인
+tags: ["Vue", "JavaScript", "Spring Boot"]
+summary: "create-vue로 만든 Vite 기반 Vue 앱의 빌드 결과물을 스프링 부트 static에 실어 한 번에 배포하는 구성을 정리하고, 프론트·백엔드를 따로 띄우는 방식과 비교했다."
+featured: false
+---
 ## 빌드 도구 Vite(비트) 
 > 작성날짜: 25.07.11
 

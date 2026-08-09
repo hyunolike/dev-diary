@@ -1,3 +1,12 @@
+---
+title: "Template Engine (View Template)에 대해 알아보자"
+slug: template-engine-view-template에-대해-알아보자
+date: "2024-11-27"
+category: 개인
+tags: ["Spring Boot", "JavaScript"]
+summary: "서버 사이드(JSP·Thymeleaf)와 클라이언트 사이드 템플릿 엔진이 HTML을 완성하는 지점이 어디서 갈리는지 렌더링 흐름으로 구분한 개념 정리."
+featured: false
+---
 ## Template Engine (View Template)에 대해 알아보자
 > 작성날짜: 24.11.27
 

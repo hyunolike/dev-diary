@@ -1,3 +1,12 @@
+---
+title: "🔍 「EmergencyAssistant」 프로젝트 백엔드 개발 분석"
+slug: emergencyassistant-프로젝트-백엔드-개발-분석
+date: "2024-10-07"
+category: 오픈소스-프로젝트-분석-일지
+tags: ["멀티모듈", "아키텍처", "Java", "오픈소스"]
+summary: "실시간 응급실 조회 서버를 뜯어보며 application·domain·infra 멀티모듈 분리와, CQRS·파사드 패턴으로 기능 함수를 조합해 비즈니스 로직을 드러내는 방식을 정리한 분석 기록."
+featured: false
+---
 ## 🔍 「EmergencyAssistant」 프로젝트 백엔드 개발 분석
 > 📅 분석 일자: 2024-10-07
 

@@ -1,3 +1,14 @@
+---
+title: "SVN 주요 용어 설명"
+slug: svn-주요-용어-설명
+date: "2025-02-23"
+category: 업무
+tags: ["SVN"]
+series: svn
+seriesOrder: 2
+summary: "trunk·리비전·재통합처럼 SVN 문서와 실무 대화에서 바로 튀어나오는 용어들을 저장소·버전 관리·작업 상태·병합·접근 제어 다섯 갈래로 묶어 정리한 용어집."
+featured: false
+---
 ### SVN 주요 용어 설명
 ```mermaid
 mindmap

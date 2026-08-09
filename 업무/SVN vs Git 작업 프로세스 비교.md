@@ -1,3 +1,14 @@
+---
+title: "SVN vs Git 작업 프로세스 비교 (작업 과정, 브랜치 전략)"
+slug: svn-vs-git-작업-프로세스-비교-작업-과정-브랜치-전략
+date: "2025-02-23"
+category: 업무
+tags: ["SVN", "Git"]
+series: svn
+seriesOrder: 5
+summary: "중앙집중식 SVN과 분산형 Git이 커밋 시점, 네트워크 의존성, 브랜치 전략에서 어떻게 갈리는지 실무 작업 순서를 나란히 놓고 비교한 정리."
+featured: false
+---
 ## SVN vs Git 작업 프로세스 비교 (작업 과정, 브랜치 전략)
 > 작성날짜: 25.02.23
 

@@ -1,3 +1,12 @@
+---
+title: "Kafka Local Hands-on"
+slug: kafka-local-hands-on
+date: "2024-11-25"
+category: 개인
+tags: ["Kafka", "Docker", "RabbitMQ"]
+summary: "도커 컴포즈로 주키퍼와 카프카를 띄우고 토픽 생성부터 프로듀서·컨슈머 통신까지 직접 확인한 실습 기록. 끝에서 RabbitMQ와 메시지 큐 성격을 비교했다."
+featured: false
+---
 ## Kafka Local Hands-on
 > 작성날짜: 24.11.25
 

@@ -1,3 +1,12 @@
+---
+title: "RabbitMQ Local Hands-on"
+slug: rabbitmq-local-hands-on
+date: "2024-11-25"
+category: 개인
+tags: ["RabbitMQ", "Docker"]
+summary: "rabbitmq:3-management 이미지를 도커로 올려 관리 UI에서 큐를 만들고 메시지를 넣어보며 익스체인지에서 큐로 이어지는 흐름을 눈으로 확인한 실습 기록."
+featured: false
+---
 ## RabbitMQ Local Hands-on
 > 작성날짜: 24.11.25
 

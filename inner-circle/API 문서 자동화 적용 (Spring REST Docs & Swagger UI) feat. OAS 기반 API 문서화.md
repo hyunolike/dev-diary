@@ -1,3 +1,12 @@
+---
+title: "API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화"
+slug: api-문서-자동화-적용-spring-rest-docs-swagger-ui-feat-oas-기반-api-문서
+date: "2024-08-28"
+category: inner-circle
+tags: ["API 문서화", "테스트", "Spring Boot"]
+summary: "프론트에 넘길 API 문서를 만들면서 테스트를 강제하는 Spring REST Docs와 UI가 좋은 Swagger UI를 굳이 둘 다 붙인 이유를 정리하고, OAS로 두 문서를 합치려다 오픈소스 커스터마이징의 한계를 확인한 기록."
+featured: true
+---
 ## API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화
 > 작성날짜: 24.08.28
 

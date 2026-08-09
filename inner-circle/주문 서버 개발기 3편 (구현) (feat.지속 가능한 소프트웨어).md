@@ -1,3 +1,14 @@
+---
+title: "주문 서버 개발기 3편 (구현)"
+slug: 주문-서버-개발기-3편-구현
+date: "2024-09-30"
+category: inner-circle
+tags: ["Kotlin", "아키텍처", "트랜잭션"]
+series: order-server
+seriesOrder: 3
+summary: "설계한 주문 생성 API를 implement 레이어에 구현체를 두고 모든 흐름이 비즈니스 레이어로 향하도록 구현하면서, 하나의 긴 트랜잭션 대신 개별 트랜잭션 조합으로 정합성을 맞춘 과정."
+featured: false
+---
 ## 주문 서버 개발기 3편 (구현)
 > 작성날짜: 24.09.30
 

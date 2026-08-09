@@ -1,3 +1,12 @@
+---
+title: "오라클 SYNONYM이란?"
+slug: 오라클-synonym이란
+date: "2025-07-19"
+category: 업무
+tags: ["Oracle"]
+summary: "다른 스키마의 객체를 자기 것처럼 부르게 해주는 SYNONYM의 PUBLIC/PRIVATE 차이와, 객체 위치가 바뀌어도 애플리케이션 쿼리를 고치지 않아도 되는 이유를 정리했다."
+featured: false
+---
 ## 오라클 SYNONYM이란?
 > 작성날짜: 25.07.19
 
