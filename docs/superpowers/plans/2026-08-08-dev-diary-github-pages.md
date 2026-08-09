@@ -795,6 +795,19 @@ describe('rehypeLocalImages', () => {
     expect(html).toContain('max-width:530px');
   });
 
+  it('선언된 width와 실제 크기가 다르면 속성은 실제 크기를 쓴다', async () => {
+    const html = await render('<img width="530" src="https://github.com/user-attachments/assets/aaa-111" />');
+    expect(html).toContain('width="1216"');
+    expect(html).toContain('height="700"');
+    expect(html).not.toContain('width="530"');
+  });
+
+  it('width 속성이 없으면 max-width도 실제 크기를 쓴다', async () => {
+    const html = await render('<img src="https://github.com/user-attachments/assets/aaa-111" />');
+    expect(html).toContain('width="1216"');
+    expect(html).toContain('max-width:1216px');
+  });
+
   it('lazy loading과 async decoding을 추가한다', async () => {
     const html = await render('<img src="https://github.com/user-attachments/assets/aaa-111" />');
     expect(html).toContain('loading="lazy"');
@@ -3079,7 +3092,7 @@ Expected: `문제 없음`
 - [ ] **Step 3: 전체 테스트 실행**
 
 Run: `cd site && npm test`
-Expected: 모든 테스트 PASS (href 7, parse-date 9, corpus 1, tags 3, rehype 8, search-index 8 = 36)
+Expected: 모든 테스트 PASS (href 7, parse-date 9, corpus 1, tags 3, rehype 10, search-index 8 = 38)
 
 - [ ] **Step 4: 페이지 수 검증**
 
