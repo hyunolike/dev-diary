@@ -8,8 +8,12 @@
 .prose h4 { font-size: 1.05rem; margin-top: 1.5rem; }
 
 .prose img {
-  max-width: 100%;
-  height: auto;
+  /* rehype-local-images가 원본 <img>의 width 속성을 그대로 max-width로
+     인라인 스타일에 박아 넣는다 (레티나 스크린샷을 절반 크기로 보여주기 위해).
+     인라인 style은 클래스 선택자보다 특이도가 높아 좁은 화면에서 이 규칙이
+     아니면 인라인 max-width가 이겨서 뷰포트를 넘치고 가로 스크롤이 생긴다. */
+  max-width: 100% !important;
+  height: auto !important;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   display: block;

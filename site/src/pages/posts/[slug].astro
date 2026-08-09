@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from 'astro:content';
+import Post from '../../layouts/Post.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+
+  const bySeries = new Map<string, typeof posts>();
+  for (const p of posts) {
+    if (!p.data.series) continue;
+    const list = bySeries.get(p.data.series) ?? [];
+    list.push(p);
+    bySeries.set(p.data.series, list);
+  }
+  for (const list of bySeries.values()) {
+    list.sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
+  }
+
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: {
+      post,
+      seriesPosts: post.data.series
+        ? (bySeries.get(post.data.series) ?? []).map((p) => ({
+            slug: p.data.slug,
+            title: p.data.title,
+            seriesOrder: p.data.seriesOrder ?? 0,
+          }))
+        : [],
+    },
+  }));
+}
+
+const { post, seriesPosts } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<Post
+  title={post.data.title}
+  date={post.data.date}
+  category={post.data.category}
+  tags={post.data.tags}
+  summary={post.data.summary}
+  series={post.data.series}
+  seriesOrder={post.data.seriesOrder}
+  seriesPosts={seriesPosts}
+  headings={headings}
+>
+  <Content />
+</Post>

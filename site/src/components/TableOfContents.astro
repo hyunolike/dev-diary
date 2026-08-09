@@ -1,0 +1,64 @@
+---
+interface Heading { depth: number; slug: string; text: string }
+interface Props { headings: Heading[] }
+
+const { headings } = Astro.props;
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+{items.length > 2 && (
+  <nav class="toc" aria-label="목차">
+    <p class="toc-title">목차</p>
+    <ul>
+      {items.map((h) => (
+        <li data-depth={h.depth}><a href={`#${h.slug}`}>{h.text}</a></li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<script>
+  const bind = () => {
+    const links = document.querySelectorAll<HTMLAnchorElement>('.toc a');
+    if (!links.length) return;
+    const byId = new Map<string, HTMLAnchorElement>();
+    links.forEach((a) => byId.set(decodeURIComponent(a.hash.slice(1)), a));
+
+    const targets = [...byId.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          links.forEach((a) => a.removeAttribute('aria-current'));
+          byId.get(e.target.id)?.setAttribute('aria-current', 'true');
+        }
+      },
+      { rootMargin: '-10% 0px -80% 0px' },
+    );
+    targets.forEach((t) => observer.observe(t));
+  };
+  bind();
+  document.addEventListener('astro:page-load', bind);
+</script>
+
+<style>
+  .toc {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    background: var(--bg-raised);
+    font-size: 0.875rem;
+  }
+  .toc-title { margin: 0 0 0.5rem; font-weight: 600; color: var(--text-dim); }
+  .toc ul { list-style: none; margin: 0; padding: 0; }
+  .toc li[data-depth='3'] { padding-left: 0.85rem; }
+  .toc a { color: var(--text-dim); text-decoration: none; display: block; padding: 0.15rem 0; }
+  .toc a:hover { color: var(--accent); }
+  .toc a[aria-current='true'] { color: var(--accent); font-weight: 600; }
+
+  @media (min-width: 1100px) {
+    .toc { position: sticky; top: 2rem; }
+  }
+</style>
