@@ -28,6 +28,13 @@ function resolve(url) {
   return candidates.some((c) => existsSync(c)) ? true : false;
 }
 
+// <pre>/<code> 안 텍스트는 링크가 아니다. 예제 코드에 `href="..."`처럼 보이는
+// 문자열이 그대로 등장할 수 있는데, 실제 링크는 코드 블록 안에 살지 않으므로
+// 속성 스캔 전에 이 영역을 통째로 잘라내도 진짜 링크를 놓칠 위험은 없다.
+function stripCode(html) {
+  return html.replace(/<(pre|code)\b[^>]*>[\s\S]*?<\/\1>/gi, '');
+}
+
 const files = walk(DIST);
 const problems = [];
 let checked = 0;
@@ -35,8 +42,9 @@ let checked = 0;
 for (const file of files) {
   const html = readFileSync(file, 'utf8');
   const rel = file.slice(DIST.length);
+  const scanned = stripCode(html);
 
-  for (const m of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+  for (const m of scanned.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const url = m[1];
     if (/^(https?:|mailto:|data:|#)/.test(url)) continue;
 
