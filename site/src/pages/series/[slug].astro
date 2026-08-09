@@ -7,23 +7,31 @@ import { SERIES } from '../../data/series';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  return Object.entries(SERIES).map(([slug, meta]) => ({
-    params: { slug },
-    props: {
-      meta,
-      posts: posts
-        .filter((p) => p.data.series === slug)
-        .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0)),
-    },
-  }));
+  return Object.entries(SERIES).map(([slug, meta]) => {
+    const seriesPosts = posts
+      .filter((p) => p.data.series === slug)
+      .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
+
+    if (meta.steps.length !== seriesPosts.length) {
+      throw new Error(
+        `시리즈 "${slug}"의 steps 배열 길이(${meta.steps.length})가 게시글 수(${seriesPosts.length})와 다릅니다. ` +
+          `site/src/data/series.ts의 steps를 게시글 수에 맞춰 수정하세요.`,
+      );
+    }
+
+    return {
+      params: { slug },
+      props: { meta, posts: seriesPosts },
+    };
+  });
 }
 
 const { meta, posts } = Astro.props;
 
-const steps = posts.map((p) => ({
+const steps = posts.map((p, i) => ({
   slug: p.data.slug,
   title: p.data.title,
-  label: p.data.title.replace(/^.*?(\d+편)\s*\(?([^)]*)\)?.*$/, '$1 $2').trim() || p.data.title,
+  label: meta.steps[i],
 }));
 ---
 
