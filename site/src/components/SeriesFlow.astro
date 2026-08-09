@@ -14,7 +14,6 @@ const { steps, currentSlug } = Astro.props;
         href={href(`/posts/${s.slug}`)}
         class="node"
         title={s.title}
-        aria-label={s.title}
         aria-current={s.slug === currentSlug ? 'true' : undefined}
       >
         <span class="num">{i + 1}</span>
