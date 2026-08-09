@@ -1,0 +1,5 @@
+---
+interface Props { entries: { date: string; category: string; title: string; slug: string }[] }
+const { entries } = Astro.props;
+---
+<p style="color: var(--text-dim); font-size: 0.875rem;">타임라인 자리 ({entries.length}건)</p>

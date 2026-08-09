@@ -1,0 +1,196 @@
+---
+import { href } from '../lib/href';
+
+interface Props { tags: { name: string; count: number }[]; total: number }
+const { tags, total } = Astro.props;
+---
+
+<section class="search-archive" data-index={href('/search-index.json')} data-base={href('/posts')}>
+  <div class="controls">
+    <input
+      type="search"
+      id="q"
+      placeholder="제목·요약·본문에서 검색"
+      autocomplete="off"
+      aria-label="글 검색"
+    />
+    <p class="status" id="status" role="status">전체 {total}편</p>
+  </div>
+
+  <div class="tag-filter" role="group" aria-label="태그 필터">
+    {tags.map((t) => (
+      <button type="button" class="tag-btn" data-tag={t.name} aria-pressed="false">
+        {t.name}<span class="count">{t.count}</span>
+      </button>
+    ))}
+    <button type="button" class="tag-btn clear" id="clear-tags" hidden>필터 해제</button>
+  </div>
+
+  <div id="results" class="results"></div>
+  <p id="empty" class="empty" hidden>조건에 맞는 글이 없습니다.</p>
+</section>
+
+<script>
+  interface Record {
+    slug: string; title: string; summary: string;
+    tags: string[]; category: string; date: string; body: string;
+  }
+
+  const init = async () => {
+    const root = document.querySelector<HTMLElement>('.search-archive');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = '1';
+
+    const input = root.querySelector<HTMLInputElement>('#q')!;
+    const status = root.querySelector<HTMLElement>('#status')!;
+    const results = root.querySelector<HTMLElement>('#results')!;
+    const empty = root.querySelector<HTMLElement>('#empty')!;
+    const clearBtn = root.querySelector<HTMLButtonElement>('#clear-tags')!;
+    const tagBtns = [...root.querySelectorAll<HTMLButtonElement>('.tag-btn[data-tag]')];
+    const postBase = root.dataset.base!;
+
+    const records: Record[] = await fetch(root.dataset.index!).then((r) => r.json());
+    const active = new Set<string>();
+
+    const params = new URLSearchParams(location.search);
+    const initialTags = params.get('tags');
+    if (initialTags) initialTags.split(',').filter(Boolean).forEach((t) => active.add(t));
+    const initialQ = params.get('q');
+    if (initialQ) input.value = initialQ;
+
+    const esc = (s: string) =>
+      s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+
+    const render = () => {
+      const q = input.value.trim().toLowerCase();
+      const matched = records.filter((r) => {
+        if (active.size && ![...active].every((t) => r.tags.includes(t))) return false;
+        if (!q) return true;
+        return (
+          r.title.toLowerCase().includes(q) ||
+          r.summary.toLowerCase().includes(q) ||
+          r.body.toLowerCase().includes(q) ||
+          r.tags.some((t) => t.toLowerCase().includes(q))
+        );
+      });
+
+      results.innerHTML = matched
+        .map(
+          (r) => `
+          <article class="card">
+            <p class="meta"><time datetime="${r.date}">${r.date}</time> · ${esc(r.category)}</p>
+            <h3><a href="${postBase}/${encodeURIComponent(r.slug)}">${esc(r.title)}</a></h3>
+            <p class="summary">${esc(r.summary)}</p>
+            <div class="tags">${r.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join('')}</div>
+          </article>`,
+        )
+        .join('');
+
+      empty.hidden = matched.length > 0;
+      status.textContent =
+        active.size || q ? `${matched.length}편 표시 중 (전체 ${records.length}편)` : `전체 ${records.length}편`;
+      clearBtn.hidden = active.size === 0;
+
+      const next = new URLSearchParams();
+      if (active.size) next.set('tags', [...active].join(','));
+      if (q) next.set('q', input.value.trim());
+      const qs = next.toString();
+      history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+    };
+
+    const syncButtons = () => {
+      tagBtns.forEach((b) => b.setAttribute('aria-pressed', String(active.has(b.dataset.tag!))));
+    };
+
+    tagBtns.forEach((btn) =>
+      btn.addEventListener('click', () => {
+        const tag = btn.dataset.tag!;
+        active.has(tag) ? active.delete(tag) : active.add(tag);
+        syncButtons();
+        render();
+      }),
+    );
+
+    clearBtn.addEventListener('click', () => {
+      active.clear();
+      syncButtons();
+      render();
+    });
+
+    let timer: number;
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = window.setTimeout(render, 120);
+    });
+
+    syncButtons();
+    render();
+  };
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  #q {
+    flex: 1 1 18rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+  .status { margin: 0; color: var(--text-dim); font-size: 0.875rem; white-space: nowrap; }
+
+  .tag-filter { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.75rem; }
+  .tag-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-raised);
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+  .tag-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .tag-btn[aria-pressed='true'] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+  .tag-btn .count { font-variant-numeric: tabular-nums; opacity: 0.7; }
+  .tag-btn.clear { border-style: dashed; }
+
+  .results { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .results { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .empty { color: var(--text-dim); text-align: center; padding: 3rem 0; }
+
+  .results :global(.card) {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+  }
+  .results :global(.card:hover) { border-color: var(--accent); }
+  .results :global(.meta) { color: var(--text-dim); font-size: 0.8rem; margin: 0 0 0.4rem; }
+  .results :global(.card h3) { margin: 0 0 0.5rem; font-size: 1.05rem; line-height: 1.4; }
+  .results :global(.card h3 a) { color: var(--text); text-decoration: none; }
+  .results :global(.card h3 a:hover) { color: var(--accent); }
+  .results :global(.summary) { color: var(--text-dim); font-size: 0.9rem; margin: 0 0 0.75rem; }
+  .results :global(.tags) { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .results :global(.chip) {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+</style>

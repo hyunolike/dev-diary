@@ -1,0 +1,38 @@
+---
+import { href } from '../lib/href';
+import TagChip from './TagChip.astro';
+
+interface Props {
+  slug: string;
+  title: string;
+  summary: string;
+  date: string;
+  category: string;
+  tags: string[];
+}
+
+const { slug, title, summary, date, category, tags } = Astro.props;
+---
+<article class="card">
+  <p class="meta"><time datetime={date}>{date}</time> · {category}</p>
+  <h3><a href={href(`/posts/${slug}`)}>{title}</a></h3>
+  <p class="summary">{summary}</p>
+  <div class="tags">{tags.map((t) => <TagChip tag={t} />)}</div>
+</article>
+
+<style>
+  .card {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    transition: border-color 0.15s ease;
+  }
+  .card:hover { border-color: var(--accent); }
+  .meta { color: var(--text-dim); font-size: 0.8rem; margin: 0 0 0.4rem; }
+  .card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; line-height: 1.4; }
+  .card h3 a { color: var(--text); text-decoration: none; }
+  .card h3 a:hover { color: var(--accent); }
+  .summary { color: var(--text-dim); font-size: 0.9rem; margin: 0 0 0.75rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+</style>
