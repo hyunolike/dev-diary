@@ -1,6 +1,6 @@
 ---
 title: "API 문서 자동화 적용 (Spring REST Docs & Swagger UI) feat. OAS 기반 API 문서화"
-slug: api-문서-자동화-적용-spring-rest-docs-swagger-ui-feat-oas-기반-api-문서
+slug: api-문서-자동화-spring-rest-docs-swagger-ui
 date: "2024-08-28"
 category: inner-circle
 tags: ["API 문서화", "테스트", "Spring Boot"]

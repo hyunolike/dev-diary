@@ -1,6 +1,6 @@
 ---
-title: "`가사를 쉽게 간직하고 공유,Mute 프로젝트` 개발일지 #0. `🛠️ 기능 개발` Spring Security OAuth2 - Enum을 활용한 소셜 로그인 응답 데이터 변환 전략"
-slug: 가사를-쉽게-간직하고-공유mute-프로젝트-개발일지-0-기능-개발-spring-security-oauth2-
+title: "Spring Security OAuth2 — Enum을 활용한 소셜 로그인 응답 데이터 변환 전략"
+slug: spring-security-oauth2-social-login-enum
 date: "2024-11-17"
 category: 개인
 tags: ["Spring Boot", "Java"]

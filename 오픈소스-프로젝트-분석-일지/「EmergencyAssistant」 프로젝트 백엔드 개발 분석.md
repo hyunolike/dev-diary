@@ -1,5 +1,5 @@
 ---
-title: "🔍 「EmergencyAssistant」 프로젝트 백엔드 개발 분석"
+title: "「EmergencyAssistant」 프로젝트 백엔드 개발 분석"
 slug: emergencyassistant-프로젝트-백엔드-개발-분석
 date: "2024-10-07"
 category: 오픈소스-프로젝트-분석-일지

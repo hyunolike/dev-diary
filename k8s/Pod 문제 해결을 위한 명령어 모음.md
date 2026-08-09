@@ -1,5 +1,5 @@
 ---
-title: "🧰 Pod 문제 해결을 위한 명령어 모음"
+title: "Pod 문제 해결을 위한 명령어 모음"
 slug: pod-문제-해결을-위한-명령어-모음
 date: "2025-06-07"
 category: k8s
