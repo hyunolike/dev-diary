@@ -1244,6 +1244,17 @@ EOF
 
 `public/`이 아니라 `src/assets/fonts/`에 둔다. Vite가 처리해야 `base`가 반영된 경로로 재작성되기 때문이다.
 
+**받은 뒤 반드시 서브셋해야 한다.** Pretendard 가변 폰트 전체는 2009KB로 한글 11,172자를
+전부 담는다. 이 사이트가 렌더할 수 있는 문자는 본문 52편과 `site/src` 전체를 통틀어 911자
+(한글 700자)뿐이다. 전체를 그대로 쓰면 폰트가 페이지 무게의 89%를 차지하고 LCP가 12초를
+넘겨 성능 기준(≥95, LCP ≤2.5초)을 못 맞춘다. `site/scripts/subset-fonts.mjs`로 줄인다
+(Task 11에서 추가). 실측: Pretendard 2009KB → 114KB, JetBrains Mono 90KB → 28KB.
+
+서브셋 문자 수집에는 함정이 있다. `remark-smartypants`가 빌드 시점에 따옴표와 말줄임표를
+변환하므로 `…` `‘` `’` 같은 문자는 **어떤 소스 파일에도 없지만 렌더된다.** 소스만 훑어
+수집하면 그 글자들만 폴백 폰트로 나온다. 빌드 후 `dist/`의 실제 렌더 텍스트에서 문자를
+뽑아 서브셋에 다 있는지 검증한다.
+
 ```bash
 cd /Users/hyuno/orca/dev-diary/site
 mkdir -p src/assets/fonts
