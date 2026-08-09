@@ -10,6 +10,10 @@ describe('parsePostDate', () => {
     expect(parsePostDate('## 제목\n> 📅 탐구 일자: 2024-10-28\n')).toBe('2024-10-28');
   });
 
+  it('분석 일자 YYYY-MM-DD를 파싱한다', () => {
+    expect(parsePostDate('## 제목\n> 📅 분석 일자: 2024-10-07\n')).toBe('2024-10-07');
+  });
+
   it('줄 끝 HTML 태그를 무시한다', () => {
     expect(parsePostDate('> 작성날짜: 24.11.17 </br>\n')).toBe('2024-11-17');
   });
