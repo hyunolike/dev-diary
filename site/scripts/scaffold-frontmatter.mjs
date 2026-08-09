@@ -27,7 +27,9 @@ function slugify(title) {
     .replace(/[「」`'"()[\]{}.,·]/g, '')
     .replace(/[^a-z0-9가-힣]+/g, '-')
     .replace(/^-+|-+$/g, '')
-    .slice(0, 60);
+    .slice(0, 60)
+    // 자르고 나서 다시 다듬는다. 60자 경계가 하이픈에 걸리면 슬러그가 하이픈으로 끝난다
+    .replace(/-+$/, '');
 }
 
 for (const dir of DIRS) {

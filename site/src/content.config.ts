@@ -38,10 +38,17 @@ const EXPECTED_POST_COUNT = 52;
 export async function assertPostCount() {
   const { getCollection } = await import('astro:content');
   const posts = await getCollection('posts');
-  if (posts.length !== EXPECTED_POST_COUNT) {
+  // 누락과 증가는 원인도 조치도 다르다. 한 문구로 뭉뚱그리면 엉뚱한 데를 뒤지게 된다.
+  if (posts.length < EXPECTED_POST_COUNT) {
     throw new Error(
       `글 ${EXPECTED_POST_COUNT}편을 기대했으나 ${posts.length}편만 로드됐습니다. ` +
         `파일명에 #이 들어갔거나 frontmatter가 스키마를 통과하지 못했는지 확인하세요.`,
+    );
+  }
+  if (posts.length > EXPECTED_POST_COUNT) {
+    throw new Error(
+      `글이 ${posts.length}편으로 늘었습니다. 새 글을 추가했다면 ` +
+        `content.config.ts의 EXPECTED_POST_COUNT를 ${posts.length}로 올리세요.`,
     );
   }
 }
