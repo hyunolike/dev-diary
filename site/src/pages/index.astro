@@ -1,11 +1,145 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { href } from '../lib/href';
 import { assertPostCount } from '../content.config';
 
 // 글이 조용히 누락된 채 빌드가 성공하는 일을 막는다. 이 페이지는 매 빌드마다 렌더링된다.
 await assertPostCount();
+
+const posts = await getCollection('posts');
+
+const featured = posts
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.date.localeCompare(b.data.date));
+
+const recent = [...posts]
+  .sort((a, b) => b.data.date.localeCompare(a.data.date))
+  .slice(0, 6);
+
+const counts = new Map<string, number>();
+for (const p of posts) for (const t of p.data.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+
+const stack = [...counts.entries()]
+  .filter(([, n]) => n >= 2)
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ko'))
+  .slice(0, 12);
+
+const NARRATIVE: Record<string, string> = {
+  'order-server':
+    '6개 도메인이 얽힌 커머스 주문을 멀티모듈로 분리하고, 내부/외부 통신과 트랜잭션 경계를 설계한 3부작',
+};
 ---
-<Base title="장현호 · dev-diary">
-  <h1>장현호</h1>
-  <p>레이아웃 확인용 임시 페이지입니다.</p>
+
+<Base title="장현호 · Backend Developer" description="Kotlin과 Spring으로 서버를 만들며 남긴 기록 52편">
+  <section class="hero">
+    <p class="kicker">Backend Developer</p>
+    <h1>장현호</h1>
+    <p class="intro">
+      Kotlin과 Spring으로 서버를 만들면서, 무엇을 왜 그렇게 결정했는지를 남겨 왔습니다.
+      2024년부터 2025년까지의 기록 {posts.length}편입니다.
+    </p>
+    <p class="links"><a href="https://github.com/hyunolike" rel="me noopener">GitHub</a></p>
+  </section>
+
+  <section class="block">
+    <h2>대표 기록</h2>
+    <div class="featured">
+      {featured.map((p) => (
+        <a class="feature" href={href(`/posts/${p.data.slug}`)}>
+          <p class="feature-meta">
+            {p.data.series ? `시리즈 · ${posts.filter((q) => q.data.series === p.data.series).length}편` : p.data.category}
+          </p>
+          <h3>{p.data.title}</h3>
+          <p class="feature-summary">
+            {p.data.series && NARRATIVE[p.data.series] ? NARRATIVE[p.data.series] : p.data.summary}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>다뤄본 기술</h2>
+    <p class="hint">누르면 해당 기록만 모아 볼 수 있습니다.</p>
+    <div class="stack">
+      {stack.map(([name, n]) => (
+        <a class="stack-item" href={href(`/archive?tags=${encodeURIComponent(name)}`)}>
+          {name}<span class="n">{n}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <h2>최근 기록</h2>
+      <a href={href('/archive')}>전체 {posts.length}편 보기 →</a>
+    </div>
+    <div class="grid">
+      {recent.map((p) => (
+        <PostCard
+          slug={p.data.slug}
+          title={p.data.title}
+          summary={p.data.summary}
+          date={p.data.date}
+          category={p.data.category}
+          tags={p.data.tags}
+        />
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .hero { padding: 2rem 0 3rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+    .kicker { color: var(--accent); font-size: 0.875rem; font-weight: 600; margin: 0 0 0.4rem; letter-spacing: 0.02em; }
+    .hero h1 { font-size: clamp(2rem, 7vw, 3rem); margin: 0 0 1rem; line-height: 1.15; }
+    .intro { max-width: var(--measure); color: var(--text-dim); margin: 0 0 1.25rem; font-size: 1.05rem; }
+    .links a { font-weight: 600; }
+
+    .block { margin-bottom: 3.5rem; }
+    .block h2 { font-size: 1.25rem; margin: 0 0 0.75rem; }
+    .block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .block-head h2 { margin: 0; }
+    .block-head a { font-size: 0.875rem; white-space: nowrap; }
+    .hint { color: var(--text-dim); font-size: 0.875rem; margin: 0 0 1rem; }
+
+    .featured { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .feature {
+      display: block;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-raised);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+    .feature:hover { border-color: var(--accent); }
+    .feature-meta { color: var(--accent); font-size: 0.8rem; font-weight: 600; margin: 0 0 0.5rem; }
+    .feature h3 { margin: 0 0 0.6rem; font-size: 1.1rem; line-height: 1.4; }
+    .feature-summary { color: var(--text-dim); font-size: 0.9rem; margin: 0; line-height: 1.6; }
+
+    .stack { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .stack-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-raised);
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    .stack-item:hover { border-color: var(--accent); color: var(--accent); }
+    .stack-item .n { color: var(--text-dim); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+
+    .grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 700px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 1100px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  </style>
 </Base>
