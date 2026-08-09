@@ -308,7 +308,7 @@ Expected: `https://hyunolike.github.io/dev-diary/`가 열리고 "장현호"가 �
 
 ### Task 2: 날짜 파서
 
-52편 중 48편은 본문에 날짜 줄이 있고 형식이 두 가지다. 꼬리가 붙은 케이스가 둘 있어 정규식만으로는 부족하다.
+52편 중 50편은 본문에 날짜 줄이 있고 라벨이 세 가지다 (작성날짜, 탐구 일자, 분석 일자). 꼬리가 붙은 케이스가 둘 있어 정규식만으로는 부족하다.
 
 **Files:**
 - Create: `site/src/lib/parse-date.mjs`, `site/src/lib/parse-date.d.ts`
@@ -334,6 +334,10 @@ describe('parsePostDate', () => {
 
   it('탐구 일자 YYYY-MM-DD를 파싱한다', () => {
     expect(parsePostDate('## 제목\n> 📅 탐구 일자: 2024-10-28\n')).toBe('2024-10-28');
+  });
+
+  it('분석 일자 YYYY-MM-DD를 파싱한다', () => {
+    expect(parsePostDate('## 제목\n> 📅 분석 일자: 2024-10-07\n')).toBe('2024-10-07');
   });
 
   it('줄 끝 HTML 태그를 무시한다', () => {
@@ -374,7 +378,7 @@ Expected: FAIL — `Failed to resolve import "./parse-date.mjs"`
 `site/src/lib/parse-date.mjs`:
 
 ```js
-const LINE = /^>\s*(?:📅\s*)?(?:작성날짜|탐구 일자|작성일)\s*[::]\s*(.+)$/m;
+const LINE = /^>\s*(?:📅\s*)?(?:작성날짜|탐구 일자|분석 일자|작성일)\s*[::]\s*(.+)$/m;
 const YMD_FULL = /^(\d{4})-(\d{1,2})-(\d{1,2})/;
 const YMD_SHORT = /^(\d{2})\.(\d{1,2})\.(\d{1,2})/;
 
@@ -407,7 +411,7 @@ export declare function parsePostDate(markdown: string): string | null;
 - [ ] **Step 4: 테스트 통과 확인**
 
 Run: `cd site && npx vitest run src/lib/parse-date.test.ts`
-Expected: PASS — 8 tests
+Expected: PASS — 9 tests
 
 - [ ] **Step 5: 실제 52편에 돌려 확인**
 
@@ -431,7 +435,7 @@ missing.forEach(m => console.log('  ' + m));
 "
 ```
 
-Expected: `전체 52 / 날짜 없음 4`, 그리고 스펙 6절이 지목한 그 4개 파일과 정확히 일치.
+Expected: `전체 52 / 날짜 없음 2`, 그리고 스펙 6절이 지목한 그 2개 파일(`업무/SVN 주요 용어 설명.md`, `개인/macOS + zsh …`)과 정확히 일치.
 
 추가로 코퍼스 테스트를 영구 테스트로 남긴다. `site/src/lib/parse-date.corpus.test.ts`:
 
@@ -445,13 +449,13 @@ const ROOT = new URL('../../../', import.meta.url).pathname;
 const DIRS = ['개인', 'inner-circle', '업무', 'k8s', 'oss', '기업-기술-블로그-탐구-일지', '오픈소스-프로젝트-분석-일지'];
 
 describe('실제 코퍼스', () => {
-  it('52편 중 정확히 48편에서 날짜를 뽑는다', () => {
+  it('52편 중 정확히 50편에서 날짜를 뽑는다', () => {
     const files = DIRS.flatMap((d) =>
       readdirSync(join(ROOT, d)).filter((f) => f.endsWith('.md')).map((f) => join(ROOT, d, f)),
     );
     expect(files.length).toBe(52);
     const parsed = files.filter((f) => parsePostDate(readFileSync(f, 'utf8')) !== null);
-    expect(parsed.length).toBe(48);
+    expect(parsed.length).toBe(50);
   });
 });
 ```
@@ -469,7 +473,7 @@ git add site/src/lib/parse-date.mjs site/src/lib/parse-date.d.ts \
 git commit -m "$(cat <<'EOF'
 본문 날짜 줄 파서 추가
 
-52편 중 48편이 본문에 날짜를 갖고 있고 형식이 두 가지다. 값 뒤에 </br>가
+52편 중 50편이 본문에 날짜를 갖고 있고 라벨이 세 가지다. 값 뒤에 </br>가
 붙거나 업데이트 날짜가 괄호로 병기된 케이스가 있어 앵커된 패턴으로 앞부분만
 소비하도록 했다. 본문 중간의 날짜 비슷한 문자열에 걸리지 않도록 줄 시작의
 인용 기호에 고정했다.
@@ -876,7 +880,7 @@ export default function rehypeLocalImages(options = {}) {
 - [ ] **Step 4: 테스트 통과 확인**
 
 Run: `cd site && npx vitest run src/plugins/rehype-local-images.test.ts`
-Expected: PASS — 8 tests
+Expected: PASS — 9 tests
 
 - [ ] **Step 5: astro.config.mjs에 등록**
 
@@ -1931,7 +1935,7 @@ export function toSearchRecord(entry: {
 - [ ] **Step 4: 테스트 통과 확인**
 
 Run: `cd site && npx vitest run src/lib/search-index.test.ts`
-Expected: PASS — 8 tests
+Expected: PASS — 9 tests
 
 - [ ] **Step 5: 정적 엔드포인트**
 
@@ -3059,7 +3063,7 @@ Expected: `문제 없음`
 - [ ] **Step 3: 전체 테스트 실행**
 
 Run: `cd site && npm test`
-Expected: 모든 테스트 PASS (href 7, parse-date 8, tags 3, rehype 8, search-index 8 = 34)
+Expected: 모든 테스트 PASS (href 7, parse-date 9, corpus 1, tags 3, rehype 8, search-index 8 = 36)
 
 - [ ] **Step 4: 페이지 수 검증**
 
