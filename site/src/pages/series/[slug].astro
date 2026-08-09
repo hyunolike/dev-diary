@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import SeriesFlow from '../../components/SeriesFlow.astro';
+import { SERIES } from '../../data/series';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return Object.entries(SERIES).map(([slug, meta]) => ({
+    params: { slug },
+    props: {
+      meta,
+      posts: posts
+        .filter((p) => p.data.series === slug)
+        .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0)),
+    },
+  }));
+}
+
+const { meta, posts } = Astro.props;
+
+const steps = posts.map((p) => ({
+  slug: p.data.slug,
+  title: p.data.title,
+  label: p.data.title.replace(/^.*?(\d+편)\s*\(?([^)]*)\)?.*$/, '$1 $2').trim() || p.data.title,
+}));
+---
+
+<Base title={`${meta.name} · 장현호`} description={meta.description}>
+  <p class="kicker">시리즈 · {posts.length}편</p>
+  <h1>{meta.name}</h1>
+  <p class="lead">{meta.description}</p>
+
+  <SeriesFlow steps={steps} />
+
+  <div class="grid">
+    {posts.map((p) => (
+      <PostCard
+        slug={p.data.slug}
+        title={p.data.title}
+        summary={p.data.summary}
+        date={p.data.date}
+        category={p.data.category}
+        tags={p.data.tags}
+      />
+    ))}
+  </div>
+
+  <style>
+    .kicker { color: var(--text-dim); font-size: 0.875rem; margin: 0 0 0.3rem; }
+    h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 0.5rem; }
+    .lead { color: var(--text-dim); max-width: var(--measure); margin: 0 0 2rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 700px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  </style>
+</Base>
