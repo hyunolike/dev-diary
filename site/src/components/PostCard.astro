@@ -15,7 +15,7 @@ const { slug, title, summary, date, category, tags } = Astro.props;
 ---
 <article class="card">
   <p class="meta"><time datetime={date}>{date}</time> · {category}</p>
-  <h3><a href={href(`/posts/${slug}`)}>{title}</a></h3>
+  <h2><a href={href(`/posts/${slug}`)}>{title}</a></h2>
   <p class="summary">{summary}</p>
   <div class="tags">{tags.map((t) => <TagChip tag={t} />)}</div>
 </article>
@@ -30,9 +30,9 @@ const { slug, title, summary, date, category, tags } = Astro.props;
   }
   .card:hover { border-color: var(--accent); }
   .meta { color: var(--text-dim); font-size: 0.8rem; margin: 0 0 0.4rem; }
-  .card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; line-height: 1.4; }
-  .card h3 a { color: var(--text); text-decoration: none; }
-  .card h3 a:hover { color: var(--accent); }
+  .card h2 { margin: 0 0 0.5rem; font-size: 1.05rem; line-height: 1.4; }
+  .card h2 a { color: var(--text); text-decoration: none; }
+  .card h2 a:hover { color: var(--accent); }
   .summary { color: var(--text-dim); font-size: 0.9rem; margin: 0 0 0.75rem; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 </style>

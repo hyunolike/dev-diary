@@ -23,6 +23,8 @@ const { title, description = '장현호의 백엔드 개발 기록 아카이브'
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
+    <link rel="icon" sizes="any" href={href('/favicon.ico')} />
     <link rel="preload" as="font" type="font/woff2" href={pretendardUrl} crossorigin />
     <script is:inline>
       (() => {
