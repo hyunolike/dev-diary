@@ -1093,6 +1093,38 @@ const posts = defineCollection({
 export const collections = { posts };
 ```
 
+### 파일명에 `#`이 있으면 조용히 누락된다
+
+Astro의 glob 로더는 경로를 URL로 다루기 때문에 파일명의 `#`를 프래그먼트 시작으로 해석해
+그 뒤를 잘라버린다. 해당 글은 `ENOENT`와 함께 컬렉션에서 빠지는데, **빌드는 exit 0으로
+성공한다.** 글이 사라진 사이트가 그대로 배포된다는 뜻이다.
+
+`개인/` 아래 두 글이 `개발일지 #0` 형태였다. `#0` → `0`으로만 바꿔 해소한다. 백틱·쉼표·
+이모지가 든 다른 파일명은 정상 동작하므로 건드리지 않는다.
+
+### 컬렉션 개수 가드
+
+위 문제는 빌드가 성공했기 때문에 발견이 늦었다. 개수를 검증해 조용한 누락을 막는다.
+`site/src/content.config.ts` 맨 아래에 추가한다.
+
+```ts
+const EXPECTED_POST_COUNT = 52;
+
+export async function assertPostCount() {
+  const { getCollection } = await import('astro:content');
+  const posts = await getCollection('posts');
+  if (posts.length !== EXPECTED_POST_COUNT) {
+    throw new Error(
+      `글 ${EXPECTED_POST_COUNT}편을 기대했으나 ${posts.length}편만 로드됐습니다. ` +
+        `파일명에 #이 들어갔거나 frontmatter가 스키마를 통과하지 못했는지 확인하세요.`,
+    );
+  }
+}
+```
+
+`site/src/pages/index.astro`가 최상단에서 이 함수를 await한다. 랜딩은 어떤 빌드에서도
+반드시 생성되므로 검사가 확실히 실행된다.
+
 - [ ] **Step 4: 빌드가 실패하는지 확인**
 
 Run: `cd site && npm run build`
