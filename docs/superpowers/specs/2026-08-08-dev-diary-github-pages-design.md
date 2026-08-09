@@ -290,7 +290,7 @@ GitHub에서 로드된다.** rehype 기반으로 가야 한다.
 원본 `.md`에 가하는 변경은 6절의 frontmatter 주입뿐이다. 본문과 이미지 URL은 한 글자도
 건드리지 않으므로, GitHub에서 원본을 직접 볼 때는 기존 외부 URL이 그대로 동작한다.
 
-예상 용량: 원본 약 55MB → 8~15MB. GitHub Pages 한도 1GB에 여유가 크다.
+예상 용량: 원본 약 55MB → 6~15MB (실측 6.7MB). GitHub Pages 한도 1GB에 여유가 크다.
 
 ## 10. 디자인 방향
 

@@ -711,7 +711,7 @@ console.log(over.length === 0 ? 'OK' : 'FAIL: ' + JSON.stringify(over));
 "
 ```
 
-Expected: 186 / 186 / 8~15MB 범위 / `OK`
+Expected: 186 / 186 / 6~15MB 범위 / `OK`
 
 - [ ] **Step 4: 커밋**
 
@@ -724,7 +724,7 @@ git commit -m "$(cat <<'EOF'
 원본이 8192x1892 PNG 같은 크기라 그대로 쓰면 LCP 기준을 못 맞춘다. GitHub이
 매 요청마다 S3 presigned URL로 302 리다이렉트하는 것도 왕복을 늘린다.
 
-Astro의 이미지 최적화는 raw <img> 태그에 적용되지 않는데 186개 중 169개가
+Astro의 이미지 최적화는 raw <img> 태그에 적용되지 않는데 186개 중 170개가
 그 형태다. 그래서 최적화를 Astro에 맡기지 않고 다운로드 시점에 sharp로
 직접 수행한다. 매니페스트의 실제 크기는 레이아웃 시프트 방지용 width/height의
 근거가 된다.
@@ -909,7 +909,7 @@ git add site/src/plugins/ site/astro.config.mjs site/package.json site/package-l
 git commit -m "$(cat <<'EOF'
 이미지 src를 로컬 WebP로 치환하는 rehype 플러그인 추가
 
-본문 이미지 186개 중 169개가 raw <img> 태그다. remark는 raw HTML을 통짜
+본문 이미지 186개 중 170개가 raw <img> 태그다. remark는 raw HTML을 통짜
 문자열 노드로만 보기 때문에 이 170개를 다룰 수 없다. 마크다운을 HTML로
 변환한 뒤의 AST를 다루는 rehype 단계에서는 두 문법이 모두 정상 엘리먼트로
 잡힌다.
