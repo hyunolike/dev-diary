@@ -2,7 +2,12 @@
   font-family: 'Pretendard';
   src: url('../assets/fonts/PretendardVariable.woff2') format('woff2-variations');
   font-weight: 400 700;
-  font-display: swap;
+  /* swap이면 폴백 폰트로 먼저 그렸다가 Pretendard로 나중에 바뀌면서 한글 폭 차이만큼
+     리플로우가 생긴다. 아카이브처럼 텍스트가 아주 긴 페이지에서 이게 누적돼 CLS를
+     0.1 밖으로 밀어낸다. preload로 이미 즉시 받아오므로 optional로 바꿔도 대부분
+     첫 페인트부터 바로 Pretendard가 쓰이고, 정말 느릴 때만 폴백으로 고정돼 늦은
+     스왑에 의한 시프트 자체가 없다. */
+  font-display: optional;
 }
 
 @font-face {

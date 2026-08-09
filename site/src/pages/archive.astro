@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SearchArchive from '../components/SearchArchive.astro';
 import Timeline from '../components/Timeline.astro';
+import { toSearchRecord } from '../lib/search-index';
 
 const posts = await getCollection('posts');
 
@@ -16,6 +17,11 @@ const tags = [...counts.entries()]
 const timeline = posts
   .map((p) => ({ date: p.data.date, category: p.data.category, title: p.data.title, slug: p.data.slug }))
   .sort((a, b) => a.date.localeCompare(b.date));
+
+// search-index.json.ts와 동일한 정렬. 클라이언트 JS가 fetch로 다시 그릴 초기 상태와
+// 서버 렌더 결과가 완전히 같아야, JS가 무필터 상태에서 다시 그리지 않고 그대로
+// 재사용해 레이아웃 시프트(CLS)를 만들지 않는다.
+const records = posts.map(toSearchRecord).sort((a, b) => b.date.localeCompare(a.date));
 ---
 
 <Base title="아카이브 · 장현호" description="백엔드 개발 기록 52편">
@@ -23,7 +29,7 @@ const timeline = posts
   <p class="lead">2024년부터 2025년까지 쓴 기록 52편입니다.</p>
 
   <Timeline entries={timeline} />
-  <SearchArchive tags={tags} total={posts.length} />
+  <SearchArchive tags={tags} total={posts.length} records={records} />
 
   <style>
     h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 0.5rem; }

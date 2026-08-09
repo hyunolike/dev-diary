@@ -1,4 +1,8 @@
 # dev-diary "🚀 Tech & Code Insights Archive" [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fhyunolike%2Fdev-diary&count_bg=%235CB7BE&title_bg=%23555555&icon=buzzfeed.svg&icon_color=%23E7E7E7&title=%EB%B0%A9%EB%AC%B8%EC%9E%90+%EC%88%98&edge_flat=false)](https://hits.seeyoufarm.com)
+
+> ### 🌐 [아카이브 사이트에서 보기 →](https://hyunolike.github.io/dev-diary/)
+> 52편의 기록을 검색·태그 필터로 탐색할 수 있습니다.
+
 > [!IMPORTANT]
 > 최신 기술 트렌드 분석과 실제 개발 경험을 담은 개인 아카이브입니다. <br/>
 >  이 공간에서 제 코딩 여정, 기술적 도전, 그리고 업계 동향에 대한 인사이트를 공유합니다. 💻 🚀 <br/>

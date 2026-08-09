@@ -1,11 +1,13 @@
 ---
 import { href } from '../lib/href';
+import type { SearchRecord } from '../lib/search-index';
 
-interface Props { tags: { name: string; count: number }[]; total: number }
-const { tags, total } = Astro.props;
+interface Props { tags: { name: string; count: number }[]; total: number; records: SearchRecord[] }
+const { tags, total, records } = Astro.props;
+const postBase = href('/posts');
 ---
 
-<section class="search-archive" data-index={href('/search-index.json')} data-base={href('/posts')}>
+<section class="search-archive" data-index={href('/search-index.json')} data-base={postBase}>
   <div class="controls">
     <input
       type="search"
@@ -26,7 +28,22 @@ const { tags, total } = Astro.props;
     <button type="button" class="tag-btn clear" id="clear-tags" hidden>필터 해제</button>
   </div>
 
-  <div id="results" class="results"></div>
+  <!--
+    무필터 초기 상태를 서버에서 미리 그려둔다. 클라이언트 스크립트가 fetch 완료 후
+    똑같은 목록을 다시 그리며 #results를 비웠다가 채우면, 그 사이 빈 상태 때문에
+    푸터가 아래로 밀리는 레이아웃 시프트(CLS)가 생긴다. URL에 태그/검색어 필터가
+    없으면 이 서버 렌더 결과를 그대로 두고 JS는 재렌더를 건너뛴다.
+  -->
+  <div id="results" class="results">
+    {records.map((r) => (
+      <article class="card">
+        <p class="meta"><time datetime={r.date}>{r.date}</time> · {r.category}</p>
+        <h2><a href={`${postBase}/${r.slug}`}>{r.title}</a></h2>
+        <p class="summary">{r.summary}</p>
+        <div class="tags">{r.tags.map((t) => <span class="chip">{t}</span>)}</div>
+      </article>
+    ))}
+  </div>
   <p id="empty" class="empty" hidden>조건에 맞는 글이 없습니다.</p>
 </section>
 
@@ -79,7 +96,7 @@ const { tags, total } = Astro.props;
           (r) => `
           <article class="card">
             <p class="meta"><time datetime="${r.date}">${r.date}</time> · ${esc(r.category)}</p>
-            <h2><a href="${postBase}/${encodeURIComponent(r.slug)}">${esc(r.title)}</a></h2>
+            <h2><a href='${postBase}/${r.slug}'>${esc(r.title)}</a></h2>
             <p class="summary">${esc(r.summary)}</p>
             <div class="tags">${r.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join('')}</div>
           </article>`,
@@ -124,7 +141,10 @@ const { tags, total } = Astro.props;
     });
 
     syncButtons();
-    render();
+    // 서버가 이미 무필터 전체 목록을 그려뒀다. URL에 태그/검색어 필터가 있을 때만
+    // 다시 그린다 — 그렇지 않으면 fetch 완료 직후 똑같은 목록을 지웠다 채우며
+    // 레이아웃 시프트(CLS)만 만든다.
+    if (active.size || input.value) render();
   };
 
   init();
