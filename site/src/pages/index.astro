@@ -1,5 +1,9 @@
 ---
 import { href } from '../lib/href';
+import { assertPostCount } from '../content.config';
+
+// 글이 조용히 누락된 채 빌드가 성공하는 일을 막는다. 이 페이지는 매 빌드마다 렌더링된다.
+await assertPostCount();
 ---
 <html lang="ko">
   <head>

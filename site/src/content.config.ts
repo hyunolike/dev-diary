@@ -32,3 +32,16 @@ const posts = defineCollection({
 });
 
 export const collections = { posts };
+
+const EXPECTED_POST_COUNT = 52;
+
+export async function assertPostCount() {
+  const { getCollection } = await import('astro:content');
+  const posts = await getCollection('posts');
+  if (posts.length !== EXPECTED_POST_COUNT) {
+    throw new Error(
+      `글 ${EXPECTED_POST_COUNT}편을 기대했으나 ${posts.length}편만 로드됐습니다. ` +
+        `파일명에 #이 들어갔거나 frontmatter가 스키마를 통과하지 못했는지 확인하세요.`,
+    );
+  }
+}
