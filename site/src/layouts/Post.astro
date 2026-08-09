@@ -22,6 +22,11 @@ interface Props {
 
 const { title, date, category, tags, summary, series, seriesPosts = [], headings } = Astro.props;
 const seriesMeta = series ? SERIES[series as keyof typeof SERIES] : null;
+
+// TableOfContents.astro와 같은 기준(h2/h3, 2개 초과)으로 TOC가 실제로
+// 렌더링될지 미리 계산한다. 렌더되지 않을 글(3편)까지 ≥1100px에서 우측
+// 15rem짜리 빈 칼럼을 예약해두면 본문 폭만 손해를 본다.
+const hasToc = headings.filter((h) => h.depth === 2 || h.depth === 3).length > 2;
 ---
 
 <Base title={`${title} · 장현호`} description={summary}>
@@ -48,9 +53,9 @@ const seriesMeta = series ? SERIES[series as keyof typeof SERIES] : null;
       </aside>
     )}
 
-    <div class="post-body">
+    <div class:list={['post-body', { 'has-toc': hasToc }]}>
       <div class="prose"><slot /></div>
-      <aside class="post-aside"><TableOfContents headings={headings} /></aside>
+      {hasToc && <aside class="post-aside"><TableOfContents headings={headings} /></aside>}
     </div>
   </article>
 
@@ -79,14 +84,14 @@ const seriesMeta = series ? SERIES[series as keyof typeof SERIES] : null;
     .post-aside { display: none; }
 
     @media (min-width: 1100px) {
-      .post-body {
+      .post-body.has-toc {
         display: grid;
         grid-template-columns: minmax(0, 1fr) 15rem;
         gap: 3rem;
         align-items: start;
       }
-      .post-body .prose { margin: 0; }
-      .post-aside { display: block; }
+      .post-body.has-toc .prose { margin: 0; }
+      .post-body.has-toc .post-aside { display: block; }
     }
   </style>
 </Base>

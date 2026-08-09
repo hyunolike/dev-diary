@@ -17,7 +17,21 @@ const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
 )}
 
 <script>
+  // 이 스코프는 모듈이라 페이지(뷰 트랜지션)를 넘나들며 살아남는다. 새 글로
+  // 넘어갈 때마다 bind()가 다시 불리는데, 이전에 만든 observer와 스크롤
+  // 리스너를 끊지 않으면 detach된 옛 DOM을 계속 붙들고 쌓인다 — 1편→2편→3편
+  // 세 번 이동하면 observer가 3개 살아있게 된다.
+  let currentObserver: IntersectionObserver | null = null;
+  let currentScrollHandler: (() => void) | null = null;
+
   const bind = () => {
+    currentObserver?.disconnect();
+    currentObserver = null;
+    if (currentScrollHandler) {
+      window.removeEventListener('scroll', currentScrollHandler);
+      currentScrollHandler = null;
+    }
+
     const links = document.querySelectorAll<HTMLAnchorElement>('.toc a');
     if (!links.length) return;
     const byId = new Map<string, HTMLAnchorElement>();
@@ -26,19 +40,64 @@ const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
     const targets = [...byId.keys()]
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
+    if (!targets.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (!e.isIntersecting) continue;
-          links.forEach((a) => a.removeAttribute('aria-current'));
-          byId.get(e.target.id)?.setAttribute('aria-current', 'true');
+    const setCurrent = (id: string | undefined) => {
+      links.forEach((a) => a.removeAttribute('aria-current'));
+      if (id) byId.get(id)?.setAttribute('aria-current', 'true');
+    };
+
+    // 크로싱 이벤트(IntersectionObserver의 isIntersecting)만으로는 TOC 링크를
+    // 클릭해 헤딩이 관찰 밴드 위쪽으로 곧장 점프하는 경우를 놓친다 — 그러면
+    // 아무 항목도 강조되지 않는다. 대신 항상 "현재 위치"를 뷰포트 상단
+    // 기준선 위에 있는 헤딩 중 가장 마지막 것으로 직접 계산한다.
+    const THRESHOLD = 120;
+    const recompute = () => {
+      let activeId: string | undefined;
+      for (const t of targets) {
+        if (t.getBoundingClientRect().top <= THRESHOLD) {
+          activeId = t.id;
+        } else {
+          break;
         }
-      },
-      { rootMargin: '-10% 0px -80% 0px' },
-    );
-    targets.forEach((t) => observer.observe(t));
+      }
+      if (!activeId) activeId = targets[0]?.id;
+      setCurrent(activeId);
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        recompute();
+        ticking = false;
+      });
+    };
+
+    currentScrollHandler = onScroll;
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // 클릭은 즉시 반영한다 — 스크롤 이벤트/rAF를 기다리지 않고 클릭한 항목을
+    // 바로 aria-current로 만든다. 브라우저의 기본 앵커 점프가 이어서 스크롤
+    // 이벤트를 발생시키면 recompute()가 실제 위치 기준으로 다시 확인한다.
+    links.forEach((a) => {
+      a.addEventListener('click', () => {
+        setCurrent(decodeURIComponent(a.hash.slice(1)));
+      });
+    });
+
+    // IntersectionObserver는 스크롤 이벤트가 뜸한 구간(예: 프로그램적 점프,
+    // 리사이즈로 인한 레이아웃 변화)에서도 재계산을 트리거하는 보조 신호로만
+    // 쓴다 — 실제로 무엇을 강조할지는 항상 recompute()가 위치로 계산한다.
+    currentObserver = new IntersectionObserver(() => recompute(), {
+      rootMargin: '-10% 0px -80% 0px',
+    });
+    targets.forEach((t) => currentObserver?.observe(t));
+
+    recompute();
   };
+
   bind();
   document.addEventListener('astro:page-load', bind);
 </script>
