@@ -3129,17 +3129,24 @@ if (problems.length) {
 console.log('문제 없음');
 ```
 
-- [ ] **Step 2: 실행**
+- [ ] **Step 2: 캐시를 지우고 실행**
 
-Run: `cd site && npm run build && npm run check-links`
+Run: `cd site && rm -rf node_modules/.astro dist && npm run build && npm run check-links`
 Expected: `문제 없음`
+
+**캐시 삭제가 선택이 아니다.** Astro의 콘텐츠 레이어 캐시(`node_modules/.astro/data-store.json`)는
+렌더 결과를 `.md` 파일의 다이제스트로 키를 잡는다. 마크다운이 그대로면 remark/rehype
+플러그인을 고쳐도 캐시된 옛 HTML을 그대로 재사용한다. Task 8에서 실제로 플러그인 수정이
+재빌드에 반영되지 않는 일이 있었다. "고쳤는데 반영이 안 된다"보다 **"고치지도 않았는데
+통과했다"**가 훨씬 위험하다 — 최종 검증에서 이걸 놓치면 검증 자체가 무의미해진다.
 
 문제가 나오면 해당 파일에서 `href()`를 거치지 않은 링크를 찾아 고친다.
 
 - [ ] **Step 3: 전체 테스트 실행**
 
 Run: `cd site && npm test`
-Expected: 모든 테스트 PASS (href 7, parse-date 9, corpus 1, tags 3, rehype 10, search-index 8 = 38)
+Expected: 모든 테스트 PASS. 실제 개수는 태스크가 진행되며 늘어나므로, 계획에 적힌 숫자보다
+직전 태스크 보고서의 개수를 기준으로 삼는다 (Task 8 종료 시점 37개).
 
 - [ ] **Step 4: 페이지 수 검증**
 
