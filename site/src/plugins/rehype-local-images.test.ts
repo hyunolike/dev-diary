@@ -41,6 +41,19 @@ describe('rehypeLocalImages', () => {
     expect(html).toContain('max-width:530px');
   });
 
+  it('선언된 width와 실제 크기가 다르면 속성은 실제 크기를 쓴다', async () => {
+    const html = await render('<img width="530" src="https://github.com/user-attachments/assets/aaa-111" />');
+    expect(html).toContain('width="1216"');
+    expect(html).toContain('height="700"');
+    expect(html).not.toContain('width="530"');
+  });
+
+  it('width 속성이 없으면 max-width도 실제 크기를 쓴다', async () => {
+    const html = await render('<img src="https://github.com/user-attachments/assets/aaa-111" />');
+    expect(html).toContain('width="1216"');
+    expect(html).toContain('max-width:1216px');
+  });
+
   it('lazy loading과 async decoding을 추가한다', async () => {
     const html = await render('<img src="https://github.com/user-attachments/assets/aaa-111" />');
     expect(html).toContain('loading="lazy"');
