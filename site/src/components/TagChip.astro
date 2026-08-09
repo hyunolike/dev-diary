@@ -4,7 +4,7 @@ import { href } from '../lib/href';
 interface Props { tag: string; count?: number }
 const { tag, count } = Astro.props;
 ---
-<a class="chip" href={href(`/tags/${encodeURIComponent(tag)}`)}>
+<a class="chip" href={href(`/tags/${tag.split('/').map(encodeURIComponent).join('/')}`)}>
   {tag}{count !== undefined && <span class="count">{count}</span>}
 </a>
 
