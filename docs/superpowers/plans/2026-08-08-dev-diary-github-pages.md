@@ -11,7 +11,7 @@
 ## Global Constraints
 
 - Node 22 이상. 로컬 확인 버전은 v22.23.2
-- Astro는 `7.2.0` 이상 8 미만
+- Astro는 `7.2.0` 이상 8 미만. 마크다운 플러그인은 `markdown.processor: unified(...)` 형태로 등록한다 (`markdown.rehypePlugins`는 Astro 7에서 폐기 예정)
 - 배포 URL은 `https://hyunolike.github.io/dev-diary/` — `site: 'https://hyunolike.github.io'`, `base: '/dev-diary'`
 - 기본 브랜치는 `develop`. 작업 브랜치는 `site/github-pages`
 - 원본 `.md` 52편에 가하는 변경은 frontmatter 주입뿐. 본문과 이미지 URL은 한 글자도 수정하지 않는다
@@ -27,7 +27,7 @@
 
 | 파일 | 책임 |
 |---|---|
-| `site/astro.config.mjs` | site/base, rehype 플러그인 등록, 마크다운 설정 |
+| `site/astro.config.mjs` | site/base, `markdown.processor: unified()` 로 rehype 플러그인 등록 |
 | `site/src/lib/href.ts` | base를 붙인 URL 생성. 모든 링크의 단일 통로 |
 | `site/src/lib/parse-date.mjs` | 본문 날짜 줄 → ISO 날짜 문자열. `.ts`가 아닌 이유는 `scripts/*.mjs`도 같은 로직을 import해야 하기 때문 |
 | `site/src/lib/parse-date.d.ts` | 위 모듈의 타입 선언 |
@@ -886,6 +886,7 @@ Expected: PASS — 8 tests
 
 ```js
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import rehypeLocalImages from './src/plugins/rehype-local-images.mjs';
 
 const BASE = '/dev-diary';
@@ -895,10 +896,25 @@ export default defineConfig({
   base: BASE,
   build: { format: 'directory' },
   markdown: {
-    rehypePlugins: [[rehypeLocalImages, { base: BASE }]],
+    processor: unified({
+      rehypePlugins: [[rehypeLocalImages, { base: BASE }]],
+    }),
   },
 });
 ```
+
+`markdown.rehypePlugins`가 아니라 `markdown.processor`에 `unified()`를 넘기는 형태다.
+Astro 7은 전자를 폐기 예정으로 표시하고 빌드마다 다음 경고를 낸다.
+
+```
+[astro] `markdown.remarkPlugins`, `markdown.rehypePlugins`, and `markdown.remarkRehype`
+        are deprecated. Pass them to `unified({...})` from `@astrojs/markdown-remark` directly instead.
+```
+
+이 아카이브는 갱신하지 않을 사이트라 오래 버텨야 하므로, 제거 예정 API 위에 얹지 않는다.
+`@astrojs/markdown-remark`는 이 때문에 우회책이 아니라 정당한 직접 의존성이며
+`dependencies`에 넣는다. `unified()`는 `gfm`과 `smartypants`를 기본값 `true`로 유지하므로
+기존 렌더링 동작은 달라지지 않는다.
 
 Astro는 마크다운 안의 raw HTML을 기본으로 통과시키므로 `rehype-raw`를 별도 등록할 필요가 없다. 등록 후 실제 글에서 `<img>`가 엘리먼트 노드로 잡히는지는 Task 8에서 확인한다.
 
