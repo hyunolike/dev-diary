@@ -33,7 +33,7 @@ export default function rehypeLocalImages(options = {}) {
       node.properties.height = size.height;
       node.properties.loading = 'lazy';
       node.properties.decoding = 'async';
-      node.properties.style = `max-width:${maxWidth}px;height:auto`;
+      node.properties.style = `max-width:min(${maxWidth}px,100%);height:auto`;
     });
   };
 }
