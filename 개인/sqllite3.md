@@ -3,7 +3,7 @@ title: "SQLite3란"
 slug: sqlite3란
 date: "2025-07-16"
 category: 개인
-tags: ["아키텍처"]
+tags: ["SQLite"]
 summary: "파일 하나가 곧 데이터베이스가 되는 SQLite3의 서버리스·제로 설정 특성을 일반 RDBMS와 견줘 정리한 짧은 소개 글."
 featured: false
 ---

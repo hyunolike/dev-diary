@@ -3,7 +3,7 @@ title: "Spring Security OAuth2 — Enum을 활용한 소셜 로그인 응답 데
 slug: spring-security-oauth2-social-login-enum
 date: "2024-11-17"
 category: 개인
-tags: ["Spring Boot", "Java"]
+tags: ["Spring Security", "Spring Boot", "Java"]
 summary: "구글·페이스북·네이버·카카오가 제각각 주는 소셜 로그인 응답을 enum의 추상 메서드로 하나의 사용자 객체로 변환해, 제공자가 늘어도 분기문이 늘지 않게 만든 개발일지."
 featured: false
 ---

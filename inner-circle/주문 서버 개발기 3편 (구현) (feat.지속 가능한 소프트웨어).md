@@ -6,7 +6,7 @@ category: inner-circle
 tags: ["Kotlin", "아키텍처", "트랜잭션"]
 series: order-server
 seriesOrder: 3
-summary: "설계한 주문 생성 API를 implement 레이어에 구현체를 두고 모든 흐름이 비즈니스 레이어로 향하도록 구현하면서, 하나의 긴 트랜잭션 대신 개별 트랜잭션 조합으로 정합성을 맞춘 과정."
+summary: "설계한 주문 생성 API를 implement 레이어에 구현체를 두고 모든 흐름이 비즈니스 레이어로 향하도록 구현한 과정. 정합성을 맞추는 방법은 장기 트랜잭션과 개별 트랜잭션 조합 두 갈래를 놓고 저울질하는 데서 멈춘다."
 featured: false
 ---
 ## 주문 서버 개발기 3편 (구현)
