@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/PretendardVariable.woff2') format('woff2-variations');
+  font-weight: 45 920;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/fonts/JetBrainsMono.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --bg: #fbfbfa;
+  --bg-raised: #ffffff;
+  --border: #e4e4e1;
+  --text: #1a1a18;
+  --text-dim: #6b6b66;
+  --accent: #2f6f5e;
+  --accent-soft: #eaf2ef;
+  --code-bg: #f4f4f2;
+
+  --measure: 68ch;
+  --radius: 10px;
+  --space: 1rem;
+}
+
+:root[data-theme='dark'] {
+  --bg: #131315;
+  --bg-raised: #1b1b1e;
+  --border: #2e2e33;
+  --text: #e8e8e4;
+  --text-dim: #9a9a94;
+  --accent: #6fc4aa;
+  --accent-soft: #1e2b28;
+  --code-bg: #202024;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--bg);
+  color-scheme: light;
+}
+
+html[data-theme='dark'] { color-scheme: dark; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+
+code, pre { font-family: var(--font-mono); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

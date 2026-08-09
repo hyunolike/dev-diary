@@ -1,19 +1,11 @@
 ---
-import { href } from '../lib/href';
+import Base from '../layouts/Base.astro';
 import { assertPostCount } from '../content.config';
 
 // 글이 조용히 누락된 채 빌드가 성공하는 일을 막는다. 이 페이지는 매 빌드마다 렌더링된다.
 await assertPostCount();
 ---
-<html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>장현호 · dev-diary</title>
-  </head>
-  <body>
-    <h1>장현호</h1>
-    <p>배포 파이프라인 확인용 임시 페이지입니다.</p>
-    <a href={href('/archive')}>아카이브</a>
-  </body>
-</html>
+<Base title="장현호 · dev-diary">
+  <h1>장현호</h1>
+  <p>레이아웃 확인용 임시 페이지입니다.</p>
+</Base>
