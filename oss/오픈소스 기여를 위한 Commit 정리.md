@@ -1,3 +1,14 @@
+---
+title: "오픈소스 기여를 위한 Commit 정리"
+slug: 오픈소스-기여를-위한-commit-정리
+date: "2025-05-18"
+category: oss
+tags: ["Git", "오픈소스"]
+series: gstreamer-oss
+seriesOrder: 3
+summary: "의미 없는 `.` 커밋이 원격까지 올라간 상태에서 기여용 PR을 내기 위해, interactive rebase로 커밋을 squash하고 amend로 메시지를 다듬어 이력을 정리한 기록."
+featured: false
+---
 ## 오픈소스 기여를 위한 Commit 정리
 > 작성날짜: 25.05.18
 

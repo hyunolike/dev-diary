@@ -1,0 +1,104 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { href } from '../lib/href';
+import pretendardUrl from '../assets/fonts/PretendardVariable.woff2?url';
+import '../styles/tokens.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = '장현호의 백엔드 개발 기록 아카이브' } = Astro.props;
+
+---
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
+    <link rel="icon" sizes="any" href={href('/favicon.ico')} />
+    <link rel="preload" as="font" type="font/woff2" href={pretendardUrl} crossorigin />
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('theme');
+        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+    <ClientRouter />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href={href('/')} class="brand">장현호</a>
+      <nav>
+        <a href={href('/archive')}>아카이브</a>
+        <a href="https://github.com/hyunolike" rel="me noopener">GitHub</a>
+        <button id="theme-toggle" type="button" aria-label="테마 전환">◐</button>
+      </nav>
+    </header>
+
+    <main><slot /></main>
+
+    <footer class="site-footer">
+      <p>기록 52편 · 2024–2025</p>
+      <p><a href="https://github.com/hyunolike/dev-diary">저장소 원본 보기</a></p>
+    </footer>
+
+    <script>
+      const apply = () => {
+        const btn = document.getElementById('theme-toggle');
+        if (!btn || btn.dataset.bound) return;
+        btn.dataset.bound = '1';
+        btn.addEventListener('click', () => {
+          const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem('theme', next);
+        });
+      };
+      apply();
+      document.addEventListener('astro:page-load', apply);
+    </script>
+
+    <style>
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .brand { font-weight: 700; text-decoration: none; color: var(--text); }
+      .site-header nav { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; }
+      #theme-toggle {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text);
+        cursor: pointer;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.9rem;
+      }
+      main { max-width: 72rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+      .site-footer {
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: 2rem 1.25rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-dim);
+        font-size: 0.875rem;
+      }
+      .site-footer p { margin: 0.25rem 0; }
+    </style>
+  </body>
+</html>

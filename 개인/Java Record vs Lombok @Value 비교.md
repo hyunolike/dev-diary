@@ -1,3 +1,12 @@
+---
+title: "Java Record vs Lombok @Value 비교"
+slug: java-record-vs-lombok-value-비교
+date: "2025-03-22"
+category: 개인
+tags: ["Java"]
+summary: "불변 객체를 만드는 두 방법을 상속 가능 여부, 접근자 제어, 생성자 형태로 갈라 비교하고 Record의 compact constructor로 값 검증까지 넣는 예제를 붙였다."
+featured: false
+---
 ## Java Record vs Lombok @Value 비교
 > 작성날짜: 25.03.22
 

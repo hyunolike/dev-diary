@@ -1,3 +1,12 @@
+---
+title: "코틀린의 확장함수 활용해 Converter Extension 해보자"
+slug: 코틀린의-확장함수-활용해-converter-extension-해보자
+date: "2024-09-17"
+category: inner-circle
+tags: ["Kotlin", "리팩터링"]
+summary: "계층 사이 DTO 변환 코드가 서비스에 흩어지는 걸 막으려고 코틀린 확장 함수로 Converter를 분리하고, 관심사 분리와 재사용 측면에서 얻은 효과를 주문 서비스 코드로 정리했다."
+featured: false
+---
 ## 코틀린의 확장함수 활용해 Converter Extension 해보자 
 > 작성날짜: 24.09.17
 

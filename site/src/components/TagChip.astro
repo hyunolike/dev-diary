@@ -1,0 +1,26 @@
+---
+import { href } from '../lib/href';
+
+interface Props { tag: string; count?: number }
+const { tag, count } = Astro.props;
+---
+<a class="chip" href={href(`/tags/${tag}`)}>
+  {tag}{count !== undefined && <span class="count">{count}</span>}
+</a>
+
+<style>
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--text-dim);
+    background: var(--bg-raised);
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .count { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+</style>

@@ -1,3 +1,12 @@
+---
+title: "macOS + zsh 환경 설정 완벽 가이드 (.zprofile vs .zshrc)"
+slug: macos-zsh-환경-설정-완벽-가이드-zprofile-vs-zshrc
+date: "2025-10-30"
+category: 개인
+tags: ["Linux", "트러블슈팅"]
+summary: "PATH를 .zprofile에 넣었더니 IntelliJ 터미널에서만 안 잡히는 이유를 두 파일의 실행 시점 차이로 갈라 정리하고, 잘못된 설정 한 줄로 터미널이 죽었을 때의 진단·복구 절차까지 붙였다."
+featured: false
+---
 # macOS + zsh 환경 설정 완벽 가이드 (.zprofile vs .zshrc)
 
 ## 🧭 한 문장 요약

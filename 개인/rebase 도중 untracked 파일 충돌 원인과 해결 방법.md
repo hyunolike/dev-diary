@@ -1,3 +1,12 @@
+---
+title: "rebase 도중 untracked 파일 충돌 원인과 해결 방법"
+slug: rebase-도중-untracked-파일-충돌-원인과-해결-방법
+date: "2025-09-16"
+category: 개인
+tags: ["Git", "트러블슈팅"]
+summary: "rebase가 미추적 파일을 덮어쓸까 봐 멈추는 이유를 워킹 트리 보호 원칙으로 짚고, squash로는 왜 풀리지 않는지와 stash -u로 치운 뒤 이어가는 해결 순서를 정리했다."
+featured: false
+---
 ## rebase 도중 untracked 파일 충돌 원인과 해결 방법
 > 작성날짜: 25.09.16
 

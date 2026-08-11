@@ -1,3 +1,12 @@
+---
+title: "Redis Local Hands-on (feat. redis key 문법)"
+slug: redis-local-hands-on-feat-redis-key-문법
+date: "2024-11-25"
+category: 개인
+tags: ["Redis", "Docker"]
+summary: "도커로 레디스를 띄워 문자열·리스트·해시·TTL 명령을 직접 쳐보고, 실무에서 쓸 키 네이밍 규칙(계층 구조, 환경 구분, 임시 키)까지 정리했다."
+featured: false
+---
 ## Redis Local Hands-on (feat. redis key 문법)
 > 작성날짜: 24.11.25
 

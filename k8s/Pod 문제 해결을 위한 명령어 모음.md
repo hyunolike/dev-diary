@@ -1,3 +1,14 @@
+---
+title: "Pod 문제 해결을 위한 명령어 모음"
+slug: pod-문제-해결을-위한-명령어-모음
+date: "2025-06-07"
+category: k8s
+tags: ["Kubernetes", "Linux", "트러블슈팅"]
+series: k8s
+seriesOrder: 1
+summary: "장애가 나면 반사적으로 치게 되는 kubectl 명령을 상태 확인 → 이벤트·로그 진단 → 재시작 → 재확인 순서로 묶어둔 짧은 명령어 모음."
+featured: false
+---
 ## 🧰 Pod 문제 해결을 위한 명령어 모음
 > 작성날짜: 25.06.07
 

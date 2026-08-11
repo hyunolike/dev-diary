@@ -1,0 +1,70 @@
+---
+import { href } from '../lib/href';
+
+interface Step { slug: string; title: string; label: string }
+interface Props { steps: Step[]; currentSlug?: string }
+
+const { steps, currentSlug } = Astro.props;
+---
+
+<ol class="flow">
+  {steps.map((s, i) => (
+    <li>
+      <a
+        href={href(`/posts/${s.slug}`)}
+        class="node"
+        title={s.title}
+        aria-current={s.slug === currentSlug ? 'true' : undefined}
+      >
+        <span class="num">{i + 1}</span>
+        <span class="label">{s.label}</span>
+      </a>
+      {i < steps.length - 1 && <span class="arrow" aria-hidden="true">→</span>}
+    </li>
+  ))}
+</ol>
+
+<style>
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+  }
+  .flow li { display: flex; align-items: center; gap: 0.5rem; }
+  .node {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+  }
+  .node:hover { border-color: var(--accent); }
+  .node[aria-current='true'] { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+  .num {
+    display: grid;
+    place-items: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+  .arrow { color: var(--text-dim); }
+  @media (max-width: 600px) {
+    .flow { flex-direction: column; align-items: stretch; }
+    .flow li { flex-direction: column; align-items: stretch; }
+    .arrow { display: none; }
+  }
+</style>

@@ -1,4 +1,8 @@
 # dev-diary "🚀 Tech & Code Insights Archive" [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fhyunolike%2Fdev-diary&count_bg=%235CB7BE&title_bg=%23555555&icon=buzzfeed.svg&icon_color=%23E7E7E7&title=%EB%B0%A9%EB%AC%B8%EC%9E%90+%EC%88%98&edge_flat=false)](https://hits.seeyoufarm.com)
+
+> ### 🌐 [아카이브 사이트에서 보기 →](https://hyunolike.github.io/dev-diary/)
+> 52편의 기록을 검색·태그 필터로 탐색할 수 있습니다.
+
 > [!IMPORTANT]
 > 최신 기술 트렌드 분석과 실제 개발 경험을 담은 개인 아카이브입니다. <br/>
 >  이 공간에서 제 코딩 여정, 기술적 도전, 그리고 업계 동향에 대한 인사이트를 공유합니다. 💻 🚀 <br/>
@@ -124,13 +128,13 @@
 - [`📚 학습 및 연구` Spring Boot + Vue3 DDD](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/SpringBoot-Vue3-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_DDD.md)
 - [`📚 학습 및 연구` 맥북에 도커 오라클 디비 띄우기 (feat. colima)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%EB%A7%A5%EB%B6%81%EC%97%90%20%EB%8F%84%EC%BB%A4%20%EC%98%A4%EB%9D%BC%ED%81%B4%20%EB%94%94%EB%B9%84%20%EB%9D%84%EC%9A%B0%EA%B8%B0.md)
 - [`📚 학습 및 연구` 빌드 도구 Vite(비트)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%EB%B9%8C%EB%93%9C-%EB%8F%84%EA%B5%AC-Vite%20(feat.%20Vue).md)
-- [`기술 블로그 구축 ` 개발일지 #0 `🛠️ 기능 개발` 배포 중 깃 복구 과정](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%60%EA%B8%B0%EC%88%A0%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B5%AC%EC%B6%95%20%60%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80%20%230%20%60%F0%9F%9B%A0%EF%B8%8F%20%EA%B8%B0%EB%8A%A5%20%EA%B0%9C%EB%B0%9C%60%20%EB%B0%B0%ED%8F%AC%20%EC%A4%91%20%EA%B9%83%20%EB%B3%B5%EA%B5%AC%20%EA%B3%BC%EC%A0%95.md)
+- [`기술 블로그 구축 ` 개발일지 #0 `🛠️ 기능 개발` 배포 중 깃 복구 과정](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%60%EA%B8%B0%EC%88%A0%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B5%AC%EC%B6%95%20%60%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80%200%20%60%F0%9F%9B%A0%EF%B8%8F%20%EA%B8%B0%EB%8A%A5%20%EA%B0%9C%EB%B0%9C%60%20%EB%B0%B0%ED%8F%AC%20%EC%A4%91%20%EA%B9%83%20%EB%B3%B5%EA%B5%AC%20%EA%B3%BC%EC%A0%95.md)
 - [`📚 학습 및 연구` Java Record vs Lombok @Value 비교](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%20Record%20vs%20Lombok%20%40Value%20%EB%B9%84%EA%B5%90.md) 
 - [`📚 학습 및 연구` Template Engine (View Template)에 대해 알아보자](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Template%20Engine%20(View%20Template)%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90.md)
 - [`📚 학습 및 연구` RabbitMQ Local Hands-on](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/RabbitMQ%20Local%20Hands-on.md)
 - [`📚 학습 및 연구` Redis Local Hands-on (feat. redis key 문법)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Redis%20Local%20Hands-on.md)
 - [`📚 학습 및 연구` Kafka Local Hands-on](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Kafka%20Local%20Hands-on.md)
-- [`가사를 쉽게 간직하고 공유,Mute 프로젝트` 개발일지 #0. `🛠️ 기능 개발` Spring Security OAuth2 - Enum을 활용한 소셜 로그인 응답 데이터 변환 전략](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%60%EA%B0%80%EC%82%AC%EB%A5%BC%20%EC%89%BD%EA%B2%8C%20%EA%B0%84%EC%A7%81%ED%95%98%EA%B3%A0%20%EA%B3%B5%EC%9C%A0%2CMute%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%60%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80%20%230.%20%60%F0%9F%9B%A0%EF%B8%8F%20%EA%B8%B0%EB%8A%A5%20%EA%B0%9C%EB%B0%9C%60%20Spring%20Security%20OAuth2%20-%20Enum%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EC%86%8C%EC%85%9C%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9D%91%EB%8B%B5%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%80%ED%99%98%20%EC%A0%84%EB%9E%B5.md)
+- [`가사를 쉽게 간직하고 공유,Mute 프로젝트` 개발일지 #0. `🛠️ 기능 개발` Spring Security OAuth2 - Enum을 활용한 소셜 로그인 응답 데이터 변환 전략](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/%60%EA%B0%80%EC%82%AC%EB%A5%BC%20%EC%89%BD%EA%B2%8C%20%EA%B0%84%EC%A7%81%ED%95%98%EA%B3%A0%20%EA%B3%B5%EC%9C%A0%2CMute%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%60%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80%200.%20%60%F0%9F%9B%A0%EF%B8%8F%20%EA%B8%B0%EB%8A%A5%20%EA%B0%9C%EB%B0%9C%60%20Spring%20Security%20OAuth2%20-%20Enum%EC%9D%84%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EC%86%8C%EC%85%9C%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9D%91%EB%8B%B5%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%80%ED%99%98%20%EC%A0%84%EB%9E%B5.md)
 - [`📚 학습 및 연구` Java의 Record Class (feat. Kotlin의 Data Class)](https://github.com/hyunolike/dev-diary/blob/develop/%EA%B0%9C%EC%9D%B8/Java%EC%9D%98%20Record%20Class%20(feat.%20Kotlin%EC%9D%98%20Data%20Class).md)
 
 ### 🏪 업무

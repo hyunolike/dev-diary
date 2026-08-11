@@ -1,3 +1,12 @@
+---
+title: "Swagger 개선기 feat. 커스텀 어노테이션, ISP (인터페이스분리원칙)"
+slug: swagger-개선기-feat-커스텀-어노테이션-isp-인터페이스분리원칙
+date: "2024-08-30"
+category: inner-circle
+tags: ["API 문서화", "리팩터링", "Spring Boot"]
+summary: "컨트롤러에 스웨거 애노테이션이 뒤엉켜 서버 코드가 읽히지 않자, 인터페이스 분리 원칙을 적용해 문서용 인터페이스를 떼어내고 반복되는 정의는 커스텀 어노테이션으로 묶은 개선기."
+featured: true
+---
 ## Swagger 개선기 feat. 커스텀 어노테이션, ISP (인터페이스분리원칙)
 > 작성날짜: 24.08.30
 

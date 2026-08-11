@@ -1,3 +1,12 @@
+---
+title: "JPA Entity 연관관계 (feat. 제미니의 개발실무)"
+slug: jpa-entity-연관관계-feat-제미니의-개발실무
+date: "2024-09-29"
+category: inner-circle
+tags: ["JPA", "DDD"]
+summary: "연관관계를 웬만하면 걸지 않고 id로만 매핑하는 지침을 세우고, 엔티티와 도메인 객체가 1:1일 필요가 없는 이유를 리뷰·이미지 모델링 예로 풀었다."
+featured: false
+---
 ## JPA Entity 연관관계 (feat. 제미니의 개발실무)
 > 작성날짜: 24.09.29
 

@@ -1,0 +1,92 @@
+---
+import { href } from '../lib/href';
+
+interface Entry { date: string; category: string; title: string; slug: string }
+interface Props { entries: Entry[] }
+
+const { entries } = Astro.props;
+
+const byMonth = new Map<string, Entry[]>();
+for (const e of entries) {
+  const key = e.date.slice(0, 7);
+  const list = byMonth.get(key) ?? [];
+  list.push(e);
+  byMonth.set(key, list);
+}
+
+const months = [...byMonth.keys()].sort();
+const first = months[0];
+const last = months[months.length - 1];
+
+function monthRange(from: string, to: string): string[] {
+  const out: string[] = [];
+  let [y, m] = from.split('-').map(Number);
+  const [ey, em] = to.split('-').map(Number);
+  while (y < ey || (y === ey && m <= em)) {
+    out.push(`${y}-${String(m).padStart(2, '0')}`);
+    m += 1;
+    if (m > 12) { m = 1; y += 1; }
+  }
+  return out;
+}
+
+const allMonths = monthRange(first, last);
+const max = Math.max(...[...byMonth.values()].map((v) => v.length));
+---
+
+<section class="timeline" aria-label="작성 시기 분포">
+  <div class="bars">
+    {allMonths.map((month) => {
+      const list = byMonth.get(month) ?? [];
+      const height = list.length === 0 ? 0 : Math.round((list.length / max) * 100);
+      const label = `${month} · ${list.length}편`;
+      return (
+        <div class="col">
+          <div
+            class="bar"
+            role="img"
+            style={`height:${height}%`}
+            data-count={list.length}
+            title={label}
+            aria-label={label}
+          />
+        </div>
+      );
+    })}
+  </div>
+  <div class="axis">
+    <span>{first.replace('-', '.')}</span>
+    <span>{last.replace('-', '.')}</span>
+  </div>
+</section>
+
+<style>
+  .timeline { margin-bottom: 2.5rem; }
+  .bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 60px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--border);
+  }
+  .col { flex: 1 1 0; display: flex; align-items: flex-end; height: 100%; min-width: 3px; }
+  .bar {
+    width: 100%;
+    background: var(--accent);
+    border-radius: 2px 2px 0 0;
+    opacity: 0.75;
+    min-height: 0;
+    transition: opacity 0.15s ease;
+  }
+  .bar[data-count='0'] { background: var(--border); opacity: 1; height: 2px !important; }
+  .bar:hover { opacity: 1; }
+  .axis {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+</style>

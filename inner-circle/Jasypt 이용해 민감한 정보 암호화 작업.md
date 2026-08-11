@@ -1,3 +1,12 @@
+---
+title: "Jasypt 이용해 민감한 정보 암호화 작업"
+slug: jasypt-이용해-민감한-정보-암호화-작업
+date: "2024-09-07"
+category: inner-circle
+tags: ["Spring Boot", "AWS", "MySQL"]
+summary: "AWS 데이터베이스 접속 정보를 원격 저장소에 올려야 하는 상황에서 Jasypt로 application.yml 속성을 암호화하고, 복호화 키는 실행 환경변수로 분리한 적용 기록."
+featured: false
+---
 ## Jasypt 이용해 민감한 정보 암호화 작업 
 > 작성날짜: 24.09.07
 

@@ -1,3 +1,14 @@
+---
+title: "네트워크 권한 문제로 인한 Pod 연결 장애"
+slug: 네트워크-권한-문제로-인한-pod-연결-장애
+date: "2025-06-07"
+category: k8s
+tags: ["Kubernetes", "Linux", "트러블슈팅"]
+series: k8s
+seriesOrder: 3
+summary: "Loki와 Grafana가 통신하지 못하는 장애를 거슬러 올라가니 Calico ServiceAccount에 RBAC 권한이 없어 CNI가 아예 동작하지 못한 것이었고, ClusterRoleBinding으로 권한을 주자 아래 서비스들이 연쇄로 복구된 진단 기록."
+featured: true
+---
 ## 네트워크 권한 문제로 인한 Pod 연결 장애
 > 작성날짜: 25.06.07
 
